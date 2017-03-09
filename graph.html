@@ -1,0 +1,395 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Grapp</title>
+
+  <style type="text/css">
+    body, html {
+      font-family: sans-serif;
+    }
+  </style>
+
+  <link rel="stylesheet" type="text/css"  href="style.css">
+	
+	<script>
+
+	/* variables */
+	var v = 0;
+	var SwipePhase = 0;
+	
+	/* Sidenav */
+	function openNav() {
+		document.getElementById("mySidenav").style.width = "200px";
+		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+		document.getElementById("hamburger").innerHTML = '<img src="kruis.svg" height="18px"/>';
+		v = 1;
+		closeSwipe(); //om te voorkomen dat ze allebei aanstaan tegelijkertijd
+	}
+
+			// Set the width of the side navigation to 0 
+	function closeNav() {
+		document.getElementById("mySidenav").style.width = "0";
+		document.body.style.backgroundColor = "white"; 
+		document.getElementById("hamburger").innerHTML = '<img src="hamburger.svg" height="18px"/>';
+		v = 0;
+	}
+	
+	function toggleNav() {
+		if (v == 0) {
+			openNav();
+		}
+		else if (v == 1) {
+			closeNav();
+		}
+	}
+	
+	/* Swipemenu */
+	function openSwipe() {
+		document.getElementById("mySwipemenu").style.left = "5%";
+		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+		SwipePhase = 1;
+		closeNav(); //om te voorkomen dat ze allebei aanstaan tegelijkertijd
+	}
+	
+	function closeSwipe() {
+		document.getElementById("mySwipemenu").style.left = "98%";
+		document.body.style.backgroundColor = "white"; 
+		SwipePhase = 0;
+	}
+	
+	function toggleSwipe() {
+		if(SwipePhase == 0) {
+		openSwipe();
+		} else {
+		closeSwipe();
+		}
+	}
+	
+		//trigger swipe
+	document.addEventListener('touchstart', handleTouchStart, false);        
+	document.addEventListener('touchmove', handleTouchMove, false);
+
+	var xDown = null;                                                        
+	var yDown = null;                                                        
+
+	function handleTouchStart(evt) {                                         
+		xDown = evt.touches[0].clientX;                                      
+		yDown = evt.touches[0].clientY;                                      
+	};                                                
+
+	function handleTouchMove(evt) {
+		if ( ! xDown || ! yDown ) {
+			return;
+		}
+
+    var xUp = evt.touches[0].clientX;                                    
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+	
+	
+	
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+        if ( xDiff > 0 ) {
+		//left swipe
+		if(v == 1) {
+			 closeNav();
+		 } else {
+            openSwipe();
+			}
+        } else {
+		//right swipe
+            closeSwipe();
+        }                       
+    } else {
+        if ( yDiff > 0 ) {
+            /* up swipe (niet in gebruik) */ 
+        } else { 
+            /* down swipe (niet in gebruik) */
+        }                                                                 
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;                                             
+}	
+	</script>
+	<script language="javascript" src="knoppengraph.js"></script>
+	<meta charset="utf-8">
+	
+</head>
+<body>
+
+
+
+<!-- Header, indien nodig gebruik dit tekentje voor hamburgermenu en pas padding aan: &#9776; -->
+<div id="header"><a id="hamburger" onclick="toggleNav()"><img src="hamburger.svg" height="18px"/></a><span id="grapp">grapp</span></div>  
+
+<!-- Sidenav -->
+	<div id="mySidenav" class="sidenav">
+  		<a href="index.html"><img alt="123" class="sidenavimg" src="calculator.png" height="25px" valign="middle"/>Calculator</a>
+  		<a class="active" onclick="closeNav()"><img class="sidenavimg" alt="graph" src="graph.png" height="25px" valign="middle"/>Graph</a>
+	</div>
+
+<div name="1" id="1" style="display:block;">
+	<div name="graphsettingsform" id="graphsettingsform"> 
+		<form name="graphsettings" id="graphsettings">
+			<div class="formrow"> <label class="formulelabel">Functie 1  		</label>	<input class="formuleinput" name = "formule1" id="formule1" type="text" readonly onclick="formule1onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input> </div>
+			<div class="formrow"> <label class="formulelabel">Functie 2  		</label>	<input class="formuleinput" name = "formule2" id="formule2" type="text" readonly onclick="formule2onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input> </div>
+			<div class="formrow"> <label class="windowsettingslabel">X-min  </label>	<input class="windowsettingsinput" id="xmin" type="text" readonly onclick="xminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
+			<div class="formrow"> <label class="windowsettingslabel">X-max  </label>	<input class="windowsettingsinput" id="xmax" type="text" readonly onclick="xmaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
+			<div class="formrow"> <label class="windowsettingslabel">Y-min	</label>	<input class="windowsettingsinput" id="ymin" type="text" readonly onclick="yminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
+			<div class="formrow"> <label class="windowsettingslabel">Y-max	</label>	<input class="windowsettingsinput" id="ymax" type="text" readonly onclick="ymaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
+			<div><input type="button" id="button" value="Run" onclick="run(formule1.value, formule2.value, xmin.value, xmax.value, ymin.value, ymax.value)" style="width:150px;"></div>
+		</form>
+	</div>
+	
+	<form name="Calc">
+<!-- Swipemenu -->
+	<div id="mySwipemenu" class="swipemenu">
+			<input TYPE="button" NAME="INV" VALUE="INV" OnClick= "" class="operator">
+            <input TYPE="button" NAME="log"   VALUE="log" OnCLick="">
+            <input TYPE="button" NAME="ln" VALUE="ln" OnClick="">
+            <input TYPE="button" NAME="tan" 	VALUE="tan" onClick=""> 
+            <input TYPE="button" NAME="sin"   VALUE="sin" OnClick="">
+            <input TYPE="button" NAME="cos"   VALUE="cos" OnCLick="">
+            <input TYPE="button" NAME="pi" VALUE="&pi;" OnClick="">
+            <input TYPE="button" NAME="e"  VALUE="e" onClick="">
+            <input TYPE="button" NAME="negMin"  VALUE="(-)" onClick="">
+            <input TYPE="button" NAME="xWortel"  VALUE="x&radic;" onClick="">
+            <input TYPE="button" NAME="secondWortel"   VALUE="&radic;" onClick="">
+            <input TYPE="button" NAME="pow"   VALUE="^" onClick="">
+	</div> 
+	
+<!-- Rekenmachine -->
+
+	<div id="calculator">		
+		<div class="keys">
+        	<input TYPE="button" NAME="x"   		VALUE="x" 				OnClick= "_x()">
+            <input TYPE="button" NAME=" ( "   		VALUE="  (  " 			OnCLick=" _linkerHaakje()">
+            <input TYPE="button" NAME=" ) " 		VALUE="  )  " 			OnClick="_rechterHaakje()">
+            <input TYPE="button" NAME="backspace" 	VALUE=" &larr; " 		OnClick="backspace()">
+            <input TYPE="button" NAME="one"   		VALUE="  1  " 			OnClick="_1()">
+            <input TYPE="button" NAME="two"   		VALUE="  2  " 			OnCLick="_2()">
+            <input TYPE="button" NAME="three" 		VALUE="  3  " 			OnClick="_3()">
+            <input TYPE="button" NAME="times"  		VALUE=" &times;  " 		OnClick="vermenigvuldigen()"	class="operator">
+            <input TYPE="button" NAME="four"  		VALUE="  4  " 			OnClick="_4()">
+            <input TYPE="button" NAME="five"  		VALUE="  5  " 			OnCLick="_5()">
+            <input TYPE="button" NAME="six"   		VALUE="  6  " 			OnClick="_6()">
+            <input TYPE="button" NAME="div"   		VALUE="  &divide;  " 	OnClick="delen()"				class="operator">
+            <input TYPE="button" NAME="seven" 		VALUE="  7  " 			OnClick="_7()">
+            <input TYPE="button" NAME="eight" 		VALUE="  8  " 			OnCLick="_8()">
+            <input TYPE="button" NAME="nine"  		VALUE="  9  " 			OnClick="_9()">
+            <input TYPE="button" NAME="plus" 		VALUE="  +  " 			OnClick="optellen()"			class="operator">
+            <input TYPE="button" NAME="dot" 		VALUE="  .  " 			OnClick="_punt()">
+            <input TYPE="button" NAME="zero"  		VALUE="  0  " 			OnClick="_0()">
+            <input TYPE="button" NAME="enter"   	VALUE="  =  " 			OnClick="calculate()">
+            <input TYPE="button" NAME="minus" 		VALUE="  -  " 			OnClick="aftrekken()"			class="operator">
+		</div>
+	</div>
+</form>
+</div>
+	
+	
+<div id="2" style="display:none; height:70%; width:100%;">
+	<div><div id="formule1weergave" style="width:50%"></div><div id="formule2weergave" style="width:50%"></div></div>
+    <canvas id="myCanvas" style="width:100%; height:100%;"></canvas>
+    <script>
+      function Graph(config) {
+        // user defined properties
+        this.canvas = document.getElementById(config.canvasId);
+        this.minX = config.minX;
+        this.minY = config.minY;
+        this.maxX = config.maxX;
+        this.maxY = config.maxY;
+        this.unitsPerTick = config.unitsPerTick;
+
+        // constants
+        this.axisColor = '#aaa';
+        this.font = '8pt Calibri';
+        this.tickSize = 20;
+
+        // relationships
+        this.context = this.canvas.getContext('2d');
+        this.rangeX = this.maxX - this.minX;
+        this.rangeY = this.maxY - this.minY;
+        this.unitX = this.canvas.width / this.rangeX;
+        this.unitY = this.canvas.height / this.rangeY;
+        this.centerY = Math.round(Math.abs(this.minY / this.rangeY) * this.canvas.height);
+        this.centerX = Math.round(Math.abs(this.minX / this.rangeX) * this.canvas.width);
+        this.iteration = (this.maxX - this.minX) / 1000;
+        this.scaleX = this.canvas.width / this.rangeX;
+        this.scaleY = this.canvas.height / this.rangeY;
+
+        // draw x and y axis
+        this.drawXAxis();
+        this.drawYAxis();
+      }
+
+      Graph.prototype.drawXAxis = function() {
+        var context = this.context;
+        context.save();
+        context.beginPath();
+        context.moveTo(0, this.centerY);
+        context.lineTo(this.canvas.width, this.centerY);
+        context.strokeStyle = this.axisColor;
+        context.lineWidth = 2;
+        context.stroke();
+
+        // draw tick marks
+        var xPosIncrement = this.unitsPerTick * this.unitX;
+        var xPos, unit;
+        context.font = this.font;
+        context.textAlign = 'center';
+        context.textBaseline = 'top';
+
+        <!-- // draw left tick marks -->
+        <!-- xPos = this.centerX - xPosIncrement; -->
+        <!-- unit = -1 * this.unitsPerTick; -->
+        <!-- while(xPos > 0) { -->
+          <!-- context.moveTo(xPos, this.centerY - this.tickSize / 2); -->
+          <!-- context.lineTo(xPos, this.centerY + this.tickSize / 2); -->
+          <!-- context.stroke(); -->
+          <!-- context.fillText(unit, xPos, this.centerY + this.tickSize / 2 + 3); -->
+          <!-- unit -= this.unitsPerTick; -->
+          <!-- xPos = Math.round(xPos - xPosIncrement); -->
+        <!-- } -->
+
+        <!-- // draw right tick marks -->
+        <!-- xPos = this.centerX + xPosIncrement; -->
+        <!-- unit = this.unitsPerTick; -->
+        <!-- while(xPos < this.canvas.width) { -->
+          <!-- context.moveTo(xPos, this.centerY - this.tickSize / 2); -->
+          <!-- context.lineTo(xPos, this.centerY + this.tickSize / 2); -->
+          <!-- context.stroke(); -->
+          <!-- context.fillText(unit, xPos, this.centerY + this.tickSize / 2 + 3); -->
+          <!-- unit += this.unitsPerTick; -->
+          <!-- xPos = Math.round(xPos + xPosIncrement); -->
+        <!-- } -->
+        <!-- context.restore(); -->
+		
+      };
+
+      Graph.prototype.drawYAxis = function() {
+        var context = this.context;
+        context.save();
+        context.beginPath();
+        context.moveTo(this.centerX, 0);
+        context.lineTo(this.centerX, this.canvas.height);
+        context.strokeStyle = this.axisColor;
+        context.lineWidth = 2;
+        context.stroke();
+
+        // draw tick marks
+        var yPosIncrement = this.unitsPerTick * this.unitY;
+        var yPos, unit;
+        context.font = this.font;
+        context.textAlign = 'right';
+        context.textBaseline = 'middle';
+
+        // draw top tick marks
+        yPos = this.centerY - yPosIncrement;
+        unit = this.unitsPerTick;
+        while(yPos > 0) {
+          context.moveTo(this.centerX - this.tickSize / 2, yPos);
+          context.lineTo(this.centerX + this.tickSize / 2, yPos);
+          context.stroke();
+          context.fillText(unit, this.centerX - this.tickSize / 2 - 3, yPos);
+          unit += this.unitsPerTick;
+          yPos = Math.round(yPos - yPosIncrement);
+        }
+
+        // draw bottom tick marks
+        yPos = this.centerY + yPosIncrement;
+        unit = -1 * this.unitsPerTick;
+        while(yPos < this.canvas.height) {
+          context.moveTo(this.centerX - this.tickSize / 2, yPos);
+          context.lineTo(this.centerX + this.tickSize / 2, yPos);
+          context.stroke();
+          context.fillText(unit, this.centerX - this.tickSize / 2 - 3, yPos);
+          unit -= this.unitsPerTick;
+          yPos = Math.round(yPos + yPosIncrement);
+        }
+        context.restore();
+      };
+
+      Graph.prototype.drawEquation = function(equation, color, thickness) {
+        var context = this.context;
+        context.save();
+        context.save();
+        this.transformContext();
+
+        context.beginPath();
+        context.moveTo(this.minX, equation(this.minX));
+
+        for(var x = this.minX + this.iteration; x <= this.maxX; x += this.iteration) {
+          context.lineTo(x, equation(x));
+        }
+
+        context.restore();
+        context.lineJoin = 'round';
+        context.lineWidth = thickness;
+        context.strokeStyle = color;
+        context.stroke();
+        context.restore();
+      };
+
+      Graph.prototype.transformContext = function() {
+        var context = this.context;
+
+        // move context to center of canvas
+        this.context.translate(this.centerX, this.centerY);
+
+        /*
+         * stretch grid to fit the canvas window, and
+         * invert the y scale so that that increments
+         * as you move upwards
+         */
+        context.scale(this.scaleX, -this.scaleY);
+      };
+      
+	  
+	  function run(formule1,formule2, xmin,ymin,xmax,ymax) {
+		document.getElementById("1").style.display = "none";
+		document.getElementById("2").style.display = "block";
+		document.getElementById("formule1weergave").innerHTML = "Functie 1: y = " + formule1; 
+		document.getElementById("formule2weergave").innerHTML = "Functie 2: y = " + formule2; 
+
+		var myGraph = new Graph({
+			canvasId: 'myCanvas',
+			minX: eval(this.xmin.value), 	
+			minY: eval(this.ymin.value),
+			maxX: eval(this.xmax.value),
+			maxY: eval(this.ymax.value),
+			unitsPerTick: 1
+		}); 
+		
+	    myGraph.drawEquation(function(x,formule1) {
+		  return eval(this.formule1.value); 		
+        }, 'green', 2);
+		myGraph.drawEquation(function(x,formule2) {
+		  return eval(this.formule2.value); 		
+        }, 'blue', 2);
+		
+		
+		
+	  };
+	 
+	  
+    </script>
+
+	<button type="button"  onclick="back()" style="height:25px; width: 150px;">Back to graphsettings</button> 
+	
+	<script>
+	
+	function back() {
+	document.getElementById("1").style.display = "block";
+	document.getElementById("2").style.display = "none";
+	}
+	</script>
+</div>
+
+
+
+</body> 
+</html>

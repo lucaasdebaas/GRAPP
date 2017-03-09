@@ -1,0 +1,277 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*Instellingen voor alles: blauw link-klik vierkantje weghalen, lettertypes instellen*/
+* { 
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+}
+
+@font-face {
+	font-family: ALEX;
+	src: url(ALEX.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: ROBOTOBLACK;
+	src: url(Roboto-Black.ttf);
+}
+
+@font-face {
+	font-family: ROBOTOLIGHT;
+	src: url(Roboto-Light.ttf);
+}
+
+@font-face {
+	font-family: ROBOTO;
+	src: url(ROBOTO.ttf);
+}
+
+html {
+	overflow: hidden;
+} 
+
+body {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+    transition: background-color .5s;
+}
+
+/*Header*/
+#header {
+	background-color: #ff6464;
+	height: 60px;
+	z-index: 1;
+}
+
+#grapp {
+	font-family: 'ALEX';
+	font-size: 25px;
+	font-weight: bold;
+	margin: 0;
+	/* position: relative;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);  werkend alternatief voor padding maar ik snap niet zo goed wat dit is */
+	padding-top: 15px;
+	float: left;
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+#hamburger {
+	cursor: pointer;
+	font-size: 20px;
+	padding-top: 21px;
+	padding-left: 22px;
+	padding-bottom: 15px;
+	padding-right: 22px;
+	margin: 0;
+	float: left;
+}
+
+#swipe {
+    cursor: pointer;
+	font-size: 20px;
+	padding-top: 16px;
+	padding-left: 20px;
+	margin: 0;
+	float: right;
+-webkit-touch-callout: 	none; /* iOS Safari */
+-webkit-user-select: 	none; /* Safari */
+-khtml-user-select: 	none; /* Konqueror HTML */
+-moz-user-select: 		none; /* Firefox */
+-ms-user-select: 		none; /* Internet Explorer/Edge */
+user-select: 			none; /* Non-prefixed version, currently supported by Chrome and Opera */
+ }
+
+/*The side navigation menu*/
+.sidenav {
+	z-index: -1;
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 60;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 6px; /* Place content helemala geen 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+	box-shadow: -2px 5px 10px #434343; 
+}
+
+	/* The navigation menu links */
+.sidenav a {
+    padding: 12px 8px 12px 20px;
+    text-decoration: none;
+	font-family: 'ROBOTOBLACK';
+	font-weight: 900;
+    font-size: 14px;
+    color: black;
+    display: inline-block;
+    transition: 0.3s;
+    white-space: nowrap;
+	width: 172px;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select:	none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+	/* Class om de link de pagina waar je nu bent grijze achtergrond te geven */
+.sidenav a.active {
+	background-color: #efefef;
+}
+
+	/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus {
+	background-color: #efefef;
+}
+
+	/* Plaatjes in de sidenav */
+.sidenavimg {
+	padding-right: 20px;
+	display: inline-block;
+}
+
+/*Calculator*/
+
+.swipemenu {
+	padding: 0;
+    border-left: 20px solid #66ffcc;
+	height: 57%; /* 100% Full-height */
+    width: 95%; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 43%;
+    left: 98%;
+    background-color: #66ffcc;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.swipemenu input {
+	white-space: nowrap;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	/* Positie en afmetingen */
+	float: left;
+	width: 31%;
+	height: 25%;
+	/* line-height: 750%; */
+	background-color: #66ffcc;
+	/* Typografie */
+	font-family: 'ROBOTO';
+	font-size: 150%;
+	color: black;
+	text-align: center;
+	/* Zorgen dat je ze niet kan selecteren */
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select:	none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */	
+}
+
+.swipemenu input.operator {
+	font-family: 'ROBOTOBLACK';
+}
+#calculator {
+	height: 100%;
+}
+
+#screen {
+	/* als je hem wil zien: background-color: #bdffb2;*/
+	border: none;
+	padding: 20px;
+	font-size: 300%;
+	height: 100%;	
+	width: 90%;
+	color: #434343;
+	font-family: 'ROBOTOLIGHT';
+}
+
+	/*zorgen dat de keys vanonder blijven*/
+.keys {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	position: fixed;
+	top: 43%;
+}
+
+.keys input {
+	border: none;
+	outline: none;
+	cursor: pointer;
+	/* Positie en afmetingen */
+	float: left;
+	width: 25%;
+	height: 11.4%;
+	/* line-height: 750%; */
+	background-color: #434343;
+	/* Typografie */
+	font-family: 'ROBOTO';
+	font-size: 150%;
+	color: white;
+	text-align: center;
+	/* Zorgen dat je ze niet kan selecteren */
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select:	none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.keys input:active {
+	background-color: #4f4f4f;
+}
+
+.keys input.operator {
+	font-family: 'ROBOTOBLACK';
+	background-color: #7f7f7f;
+}
+
+.keys input.operator:active {
+	background-color: #999999;
+}
+
+.swipemenu input:active {
+	background-color: #5be5b7;
+}
+
+/*Graph*/
+.formrow {
+	width: 50%; 
+	height: 70px; 
+	margin: 10px; 
+	
+}
+
+.formulelabel, .windowsettingslabel {
+	font-size: 30px; 
+}
+
+.formuleinput, .windowsettingsinput {
+	width: 200px; 
+	height: 50px; 
+	font-size: 30px; 
+}
+
+.formuleinput {
+	border-width: 2px; 
+}
