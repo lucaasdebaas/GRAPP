@@ -85,9 +85,9 @@
 	}	
 	
 
-	function _clear() { //clear
-		Calc.output.value = " ";
-		invoer = " ";	
+	function _backspace() { //backspace
+		Calc.output.value = Calc.output.value.slice(0, -1);
+		invoer = invoer.slice(0, -1);
 	}
 	
 	function _ANS() {
