@@ -12,7 +12,10 @@ function calculate() {
 	var berekening6 = berekening5.replace("pi", "Math.PI");
 	var berekening7 = berekening6.replace("_e", "Math.E");
 	var berekening8 = berekening7.replace("wortel", "Math.sqrt");
+	var berekening10 = berekening8.replace("macht", "**");
 
+	
+	/*De onderstaande code om de macht te berekenen is vervangen door **
 	//MACHTEN BEREKENEN
 	
 	var tekens = berekening8.length;
@@ -103,7 +106,7 @@ function calculate() {
 		var berekening10 = berekening9.replace("grondtalmachtexponent", macht);
 	}
 	//Berekening 10 is de tot hier toe goede berekening
-	
+	*/
 	
 	
 	//Hogere machtswortelberekenen
