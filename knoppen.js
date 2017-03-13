@@ -143,7 +143,7 @@
 	
 	function _xWortel() {
 		Calc.output.value += "x√(";
-		invoer += "xWortel(";
+		invoer += "xWort(";
 	}
 	
 	function _wortel() {
