@@ -249,7 +249,7 @@ function ymaxonclick(formule1, formule2,xmin,xmax,ymin,ymax) {
 	
 	function _pi() {
 		var input = document.querySelectorAll('[activeFunction = "1"]')[0];
-		input.value += "&pi;";
+		input.value += "pi";
 		
 	}
 	

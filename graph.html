@@ -136,11 +136,15 @@
 		<form name="graphsettings" id="graphsettings">
 			<div class="formrow"> <label class="formulelabel">Functie 1  		</label>	<input class="formuleinput" name = "formule1" id="formule1" type="text" readonly onclick="formule1onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input> </div>
 			<div class="formrow"> <label class="formulelabel">Functie 2  		</label>	<input class="formuleinput" name = "formule2" id="formule2" type="text" readonly onclick="formule2onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input> </div>
-			<div class="formrow"> <label class="windowsettingslabel">X-min  </label>	<input class="windowsettingsinput" id="xmin" type="text" readonly onclick="xminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
-			<div class="formrow"> <label class="windowsettingslabel">X-max  </label>	<input class="windowsettingsinput" id="xmax" type="text" readonly onclick="xmaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
-			<div class="formrow"> <label class="windowsettingslabel">Y-min	</label>	<input class="windowsettingsinput" id="ymin" type="text" readonly onclick="yminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
-			<div class="formrow"> <label class="windowsettingslabel">Y-max	</label>	<input class="windowsettingsinput" id="ymax" type="text" readonly onclick="ymaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
+			<div class="formrow"> <label id="xminlabel"class="windowsettingslabel">X-min  </label>	<input class="windowsettingsinput" id="xmin" type="text" readonly onclick="xminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
+			<div class="formrow"> <label id="ymaxlabel"class="windowsettingslabel">X-max  </label>	<input class="windowsettingsinput" id="xmax" type="text" readonly onclick="xmaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
+			<div class="formrow"> <label id="yminlabel"class="windowsettingslabel">Y-min	</label>	<input class="windowsettingsinput" id="ymin" type="text" readonly onclick="yminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
+			<div class="formrow"> <label id="ymaxlabel"class="windowsettingslabel">Y-max	</label>	<input class="windowsettingsinput" id="ymax" type="text" readonly onclick="ymaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
 			<div><input type="button" id="button" value="Run" onclick="run(formule1.value, formule2.value, xmin.value, xmax.value, ymin.value, ymax.value)" style="width:150px;"></div>
+			
+			<script>
+			
+			</script>
 		</form>
 	</div>
 	
@@ -148,17 +152,17 @@
 <!-- Swipemenu -->
 	<div id="mySwipemenu" class="swipemenu">
 			<input TYPE="button" NAME="INV" VALUE="INV" OnClick= "" class="operator">
-            <input TYPE="button" NAME="log"   VALUE="log" OnCLick="">
-            <input TYPE="button" NAME="ln" VALUE="ln" OnClick="">
-            <input TYPE="button" NAME="tan" 	VALUE="tan" onClick=""> 
-            <input TYPE="button" NAME="sin"   VALUE="sin" OnClick="">
-            <input TYPE="button" NAME="cos"   VALUE="cos" OnCLick="">
-            <input TYPE="button" NAME="pi" VALUE="&pi;" OnClick="">
-            <input TYPE="button" NAME="e"  VALUE="e" onClick="">
+            <input TYPE="button" NAME="log"   VALUE="log" OnCLick="_log()">
+            <input TYPE="button" NAME="ln" VALUE="ln" OnClick="_ln()">
+            <input TYPE="button" NAME="tan" 	VALUE="tan" onClick="_tan()"> 
+            <input TYPE="button" NAME="sin"   VALUE="sin" OnClick="_sin()">
+            <input TYPE="button" NAME="cos"   VALUE="cos" OnCLick="_cos()">
+            <input TYPE="button" NAME="pi" VALUE="&pi;" OnClick="_pi()">
+            <input TYPE="button" NAME="e"  VALUE="e" onClick="_e()">
             <input TYPE="button" NAME="negMin"  VALUE="(-)" onClick="">
-            <input TYPE="button" NAME="xWortel"  VALUE="x&radic;" onClick="">
-            <input TYPE="button" NAME="secondWortel"   VALUE="&radic;" onClick="">
-            <input TYPE="button" NAME="pow"   VALUE="^" onClick="">
+            <input TYPE="button" NAME="xWortel"  VALUE="x&radic;" onClick="_xWortel()">
+            <input TYPE="button" NAME="secondWortel"   VALUE="&radic;" onClick="_wortel()">
+            <input TYPE="button" NAME="pow"   VALUE="^" onClick="_macht()">
 	</div> 
 	
 <!-- Rekenmachine -->
@@ -243,30 +247,36 @@
         context.textAlign = 'center';
         context.textBaseline = 'top';
 
-        <!-- // draw left tick marks -->
-        <!-- xPos = this.centerX - xPosIncrement; -->
-        <!-- unit = -1 * this.unitsPerTick; -->
-        <!-- while(xPos > 0) { -->
-          <!-- context.moveTo(xPos, this.centerY - this.tickSize / 2); -->
-          <!-- context.lineTo(xPos, this.centerY + this.tickSize / 2); -->
-          <!-- context.stroke(); -->
-          <!-- context.fillText(unit, xPos, this.centerY + this.tickSize / 2 + 3); -->
-          <!-- unit -= this.unitsPerTick; -->
-          <!-- xPos = Math.round(xPos - xPosIncrement); -->
-        <!-- } -->
+        // draw left tick marks
+        xPos = this.centerX - xPosIncrement;
+        unit = -1 * this.unitsPerTick;
+        while(xPos > 0) {
+          context.moveTo(xPos, this.centerY - this.tickSize / 2);
+          context.lineTo(xPos, this.centerY + this.tickSize / 2);
+          context.stroke();
+          
+		  //Show axis values
+		  //context.fillText(unit, xPos, this.centerY + this.tickSize / 2 + 3);
+          
+		  unit -= this.unitsPerTick;
+          xPos = Math.round(xPos - xPosIncrement);
+        }
 
-        <!-- // draw right tick marks -->
-        <!-- xPos = this.centerX + xPosIncrement; -->
-        <!-- unit = this.unitsPerTick; -->
-        <!-- while(xPos < this.canvas.width) { -->
-          <!-- context.moveTo(xPos, this.centerY - this.tickSize / 2); -->
-          <!-- context.lineTo(xPos, this.centerY + this.tickSize / 2); -->
-          <!-- context.stroke(); -->
-          <!-- context.fillText(unit, xPos, this.centerY + this.tickSize / 2 + 3); -->
-          <!-- unit += this.unitsPerTick; -->
-          <!-- xPos = Math.round(xPos + xPosIncrement); -->
-        <!-- } -->
-        <!-- context.restore(); -->
+        // draw right tick marks
+        xPos = this.centerX + xPosIncrement;
+        unit = this.unitsPerTick;
+        while(xPos < this.canvas.width) {
+          context.moveTo(xPos, this.centerY - this.tickSize / 2);
+          context.lineTo(xPos, this.centerY + this.tickSize / 2);
+          context.stroke();
+          
+		  //Show axis values
+		  //context.fillText(unit, xPos, this.centerY + this.tickSize / 2 + 3);
+		  
+          unit += this.unitsPerTick;
+          xPos = Math.round(xPos + xPosIncrement);
+        }
+        context.restore();
 		
       };
 
@@ -294,7 +304,9 @@
           context.moveTo(this.centerX - this.tickSize / 2, yPos);
           context.lineTo(this.centerX + this.tickSize / 2, yPos);
           context.stroke();
-          context.fillText(unit, this.centerX - this.tickSize / 2 - 3, yPos);
+          
+		  //Show axis values
+		  //context.fillText(unit, this.centerX - this.tickSize / 2 - 3, yPos);
           unit += this.unitsPerTick;
           yPos = Math.round(yPos - yPosIncrement);
         }
@@ -306,7 +318,9 @@
           context.moveTo(this.centerX - this.tickSize / 2, yPos);
           context.lineTo(this.centerX + this.tickSize / 2, yPos);
           context.stroke();
-          context.fillText(unit, this.centerX - this.tickSize / 2 - 3, yPos);
+		  
+		  //Show axis values
+		  //context.fillText(unit, this.centerX - this.tickSize / 2 - 3, yPos);
           unit -= this.unitsPerTick;
           yPos = Math.round(yPos + yPosIncrement);
         }
@@ -350,29 +364,64 @@
       
 	  
 	  function run(formule1,formule2, xmin,ymin,xmax,ymax) {
-		document.getElementById("1").style.display = "none";
-		document.getElementById("2").style.display = "block";
-		document.getElementById("formule1weergave").innerHTML = "Functie 1: y = " + formule1; 
-		document.getElementById("formule2weergave").innerHTML = "Functie 2: y = " + formule2; 
-
-		var myGraph = new Graph({
-			canvasId: 'myCanvas',
-			minX: eval(this.xmin.value), 	
-			minY: eval(this.ymin.value),
-			maxX: eval(this.xmax.value),
-			maxY: eval(this.ymax.value),
-			unitsPerTick: 1
-		}); 
+	
+		var xmin = this.xmin.value; 
+		var xmax = this.xmax.value; 
+		var ymin = -1 * this.ymax.value; // Gelieve deze rare constructie niet te verbeteren, want het bovenstaande programma spiegelt de y-as in de x-as
+		var ymax = -1 * this.ymin.value; // Gelieve deze rare constructie niet te verbeteren, want het bovenstaande programma spiegelt de y-as in de x-as
 		
-	    myGraph.drawEquation(function(x,formule1) {
-		  return eval(this.formule1.value); 		
-        }, 'green', 2);
-		myGraph.drawEquation(function(x,formule2) {
-		  return eval(this.formule2.value); 		
-        }, 'blue', 2);
+		if (xmin && xmax && ymin && ymax !== null) {
 		
-		
-		
+			if (xmin && ymin < 0 && xmax && ymax > 0) {
+			
+				document.getElementById("1").style.display = "none";
+				document.getElementById("2").style.display = "block";
+				document.getElementById("formule1weergave").innerHTML = "Functie 1: y = " + formule1; 
+				document.getElementById("formule2weergave").innerHTML = "Functie 2: y = " + formule2; 
+				
+				var myGraph = new Graph({
+					
+					
+					canvasId: 'myCanvas',
+					minX: eval('('+ xmin + ')'), 	
+					minY: eval('('+ ymin + ')'),
+					maxX: eval('('+ xmax + ')'),
+					maxY: eval('('+ ymax + ')'),
+					unitsPerTick: 1
+				}); 
+				
+				myGraph.drawEquation(function(x) {
+					var berekening = this.formule1.value;
+					var berekening1 = berekening.replace("log", "1/Math.LN10 * Math.log"); //Math.log berekent de natuurlijke logaritme, daarom deze omslachtige manier.
+					var berekening2 = berekening1.replace("ln", "Math.log");
+					var berekening3 = berekening2.replace("sin", "Math.sin");
+					var berekening4 = berekening3.replace("cos", "Math.cos");
+					var berekening5 = berekening4.replace("tan", "Math.tan");
+					var berekening6 = berekening5.replace("pi", "Math.PI");
+					var berekening7 = berekening6.replace("e", "Math.E");
+					var berekening8 = berekening7.replace("xWortel", "Math.pow("); //werkt nog niet
+					var berekening9 = berekening8.replace("wortel", "Math.sqrt");
+					var berekening10 = berekening9.replace("macht", "Math.pow("); //werkt nog niet
+					return eval('('+ berekening10 + ')'); 		
+				}, 'green', 2);
+				myGraph.drawEquation(function(x) {
+					var berekening = this.formule2.value;
+					var berekening1 = berekening.replace("log", "1/Math.LN10 * Math.log"); //Math.log berekent de natuurlijke logaritme, daarom deze omslachtige manier.
+					var berekening2 = berekening1.replace("ln", "Math.log");
+					var berekening3 = berekening2.replace("sin", "Math.sin");
+					var berekening4 = berekening3.replace("cos", "Math.cos");
+					var berekening5 = berekening4.replace("tan", "Math.tan");
+					var berekening6 = berekening5.replace("pi", "Math.PI");
+					var berekening7 = berekening6.replace("_e", "Math.E");
+					var berekening8 = berekening7.replace("xWortel", "Math.pow("); //werkt nog niet
+					var berekening9 = berekening8.replace("wortel", "Math.sqrt");
+					var berekening10 = berekening9.replace("macht", "Math.pow("); //werkt nog niet
+					return eval('('+ berekening10 + ')'); 		
+				}, 'blue', 2);
+				
+			} 
+				
+		};
 	  };
 	 
 	  

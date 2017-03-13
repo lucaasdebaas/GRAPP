@@ -132,7 +132,7 @@
 	}
 	
 	function _pi() {
-		Calc.output.value += "&pi;";
+		Calc.output.value += "π";
 		invoer += "pi";
 	}
 	
@@ -142,16 +142,16 @@
 	}
 	
 	function _xWortel() {
-		Calc.output.value += "x&radic;(";
+		Calc.output.value += "x√(";
 		invoer += "xWortel(";
 	}
 	
 	function _wortel() {
-		Calc.output.value += "&radic;(";
+		Calc.output.value += "√(";
 		invoer += "wortel(";
 	}
 	
 	function _macht() {
-		Calc.output.value += "&circ;";
+		Calc.output.value += "^";
 		invoer += "macht";
 	}

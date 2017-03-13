@@ -10,9 +10,17 @@ function calculate() {
 	var berekening5 = berekening4.replace("tan", "Math.tan");
 	var berekening6 = berekening5.replace("pi", "Math.PI");
 	var berekening7 = berekening6.replace("_e", "Math.E");
-	var berekening8 = berekening7.replace("xWortel", "Math.pow("); //werkt nog niet
-	var berekening9 = berekening8.replace("wortel", "Math.sqrt");
+	var berekening8 = berekening7.replace("wortel", "Math.sqrt");
+	
+	/*var tekens = berekening8.length;
+	for (i=0; i<tekens; i++) {
+		if (berekening8.slice(i,i+5) == "macht") {
+			if (berekening8.slice(i-1,i) == ")") {
+				
+	*/
+	var berekening9 = berekening8.replace("mWortel", "Math.pow("); //werkt nog niet
 	var berekening10 = berekening9.replace("macht", "Math.pow("); //werkt nog niet
+	
 	
 	var uitvoer = eval(berekening10);
 	Calc.output.value = uitvoer;
