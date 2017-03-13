@@ -102,12 +102,86 @@ function calculate() {
 	else {
 		var berekening10 = berekening9.replace("grondtalmachtexponent", macht);
 	}
+	//Berekening 10 is de tot hier toe goede berekening
 	
 	
 	
-	//var berekening9 = berekening8.replace("mWortel", "Math.pow("); //werkt nog niet
-
-	var uitvoer = eval(berekening10);
+	//Hogere machtswortelberekenen
+	
+	var tekens = berekening10.length;
+	var berekening11 = "";  //deze drie variabelen worden aangemaakt om later in een berekening te testen of ze leeg zijn
+	var grondtal = "";
+	var exponent = "";
+	for (i=0; i<tekens; i++) {
+		if (berekening10.slice(i,i+5) == "mWort") {
+			//Grondtal van de macht zoeken
+			if (berekening10.slice(i-1,i) == ")") {  //als het teken voor de macht een sluithaakje is, dan
+				var sluithaakjes = 0;  // dit is het aantal sluithaakjes wat gevonden wordt voor de macht
+				var openhaakjes = 0;  // dit is het aantal openhaakjes wat gevonden wordt voor de macht
+				for (j=1; j<i; j++) {
+					if (berekening10.substr(i-j,1) == ")") {
+						sluithaakjes += 1;
+					}
+					if (berekening10.substr(i-j,1) == "(") {
+						openhaakjes += 1;
+					}
+					if (sluithaakjes == openhaakjes) {
+						console.log(berekening10.slice(i-(j+1), i));
+						grondtal = eval(berekening10.slice(i-(j+1), i));	 //dit is het grondtal van de macht	
+						var berekening11 = berekening10.replace(berekening10.slice(i-(j+1), i), "grondtal");
+						j=i;  //deze loop niet meer verder doorlopen
+					}
+				}
+			}
+			else 
+			{
+				for (j=1; j<=i; j++) {
+					if (berekening10.substr(i-j,1)== "*" || berekening10.substr(i-j,1)== "/" || berekening10.substr(i-j,1)== "+" || berekening10.substr(i-j,1)== "-" || berekening10.substr(i-j,1)== "(") {  //zoek de plus, min, vermenigvuldiging of deling voor de macht en bereken het juiste grondtal; het openingshaakje wordt gezocht om in situaties als (2^2)+1 geen problemen te krijgen.
+						grondtal = eval(berekening10.slice(i-(j-1), i));
+						var berekening11 = berekening10.replace(berekening10.slice(i-(j-1), i), "grondtal");
+						j=i;  //deze loop niet meer verder doorlopen
+					}
+				}
+			}
+			if (grondtal == "") {  //als er nog geen grondtal gevonden is, neem dat de eerste
+			grondtal = eval(berekening10.slice(0,i));
+			var berekening11 = berekening10.replace(berekening10.slice(0,i), "grondtal");
+			}
+			
+			//Exponent van de macht zoeken
+			var k = i+5;
+			var sluithaakjes = 0; 
+			var openhaakjes = 0;
+			for (j=0; j<k; j++) {
+				if (berekening10.substr(k+j,1) == ")") {
+					sluithaakjes += 1;
+				}					
+				if (berekening10.substr(k+j,1) == "(") {
+					openhaakjes += 1;
+				}
+				if (sluithaakjes == openhaakjes) {
+					console.log(j);
+					console.log(berekening10.slice(k, k+(j+1)));						
+					exponent = eval(berekening10.slice(k, k+(j+1)));	 
+					var berekening11 = berekening11.replace(berekening10.slice(k, k+(j+1)), "exponent");
+					j=k;  //deze loop niet meer verder doorlopen
+				}
+			}
+		}
+	}
+	
+	//De eigenlijke machtswortel berekenen
+	var machtswortel = Math.pow(exponent, 1/grondtal);
+	if (berekening11 == "") {  //als er geen machtberekening is, deze overslaan en berekening10 gelijkstellen aan berekening8
+		var berekening12 = berekening10;
+	}
+	else {
+		var berekening12 = berekening10.replace("grondtalmachtexponent", machtswortel);
+	}
+	
+	
+	//De gehele berekening uitvoeren en afronden
+	var uitvoer = eval(berekening12);
 	Calc.output.value = uitvoer;
 	invoer = uitvoer;
 	
