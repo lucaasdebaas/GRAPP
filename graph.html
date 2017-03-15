@@ -10,61 +10,8 @@
   </style>
 
   <link rel="stylesheet" type="text/css"  href="style.css">
-	
+	<script src="menu.js"></script>
 	<script>
-
-	/* variables */
-	var v = 0;
-	var SwipePhase = 0;
-	
-	/* Sidenav */
-	function openNav() {
-		document.getElementById("mySidenav").style.width = "200px";
-		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-		document.getElementById("hamburger").innerHTML = '<img src="kruis.svg" height="18px"/>';
-		v = 1;
-		closeSwipe(); //om te voorkomen dat ze allebei aanstaan tegelijkertijd
-	}
-
-			// Set the width of the side navigation to 0 
-	function closeNav() {
-		document.getElementById("mySidenav").style.width = "0";
-		document.body.style.backgroundColor = "white"; 
-		document.getElementById("hamburger").innerHTML = '<img src="hamburger.svg" height="18px"/>';
-		v = 0;
-	}
-	
-	function toggleNav() {
-		if (v == 0) {
-			openNav();
-		}
-		else if (v == 1) {
-			closeNav();
-		}
-	}
-	
-	/* Swipemenu */
-	function openSwipe() {
-		document.getElementById("mySwipemenu").style.left = "5%";
-		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-		SwipePhase = 1;
-		closeNav(); //om te voorkomen dat ze allebei aanstaan tegelijkertijd
-	}
-	
-	function closeSwipe() {
-		document.getElementById("mySwipemenu").style.left = "98%";
-		document.body.style.backgroundColor = "white"; 
-		SwipePhase = 0;
-	}
-	
-	function toggleSwipe() {
-		if(SwipePhase == 0) {
-		openSwipe();
-		} else {
-		closeSwipe();
-		}
-	}
-	
 		//trigger swipe
 	document.addEventListener('touchstart', handleTouchStart, false);        
 	document.addEventListener('touchmove', handleTouchMove, false);
@@ -118,6 +65,8 @@
 	<meta charset="utf-8">
 	
 </head>
+
+
 <body>
 
 
@@ -127,8 +76,16 @@
 
 <!-- Sidenav -->
 	<div id="mySidenav" class="sidenav">
-  		<a href="index.html"><img alt="123" class="sidenavimg" src="calculator.png" height="25px" valign="middle"/>Calculator</a>
-  		<a class="active" onclick="closeNav()"><img class="sidenavimg" alt="graph" src="graph.png" height="25px" valign="middle"/>Graph</a>
+  		<a href="index.html"><img alt="123" class="sidenavimg" src="calculator.png" height="25px" width="25" valign="middle"/>Calculator</a>
+  		<a class="active" onclick="closeNav()"><img class="sidenavimg" alt="graph" src="graph.png" height="25px" width="25" valign="middle"/>Graph</a>
+		<hr color="#999999" width="90%">
+		<div class="sidenavtext">
+		<a onclick="Value()"><img class="sidenavimg" src="Value_N.png" height="25" width="25" valign="middle"/>Value</a>
+		<a onclick="Zero()"><img class="sidenavimg" src="Zero.png" height="25" width="25" valign="middle"/>Zero</a>
+		<a onclick="Maximum()"><img class="sidenavimg" src="Maximum.png" height="25" width="25" valign="middle"/>Maximum</a>
+		<a onclick="Minimum()"><img class="sidenavimg" src="Minimum.png" height="25" width="25" valign="middle"/>Minimum</a>
+		<a onclick="Intersect()"><img class="sidenavimg" src="Intersect.png" height="25" width="25" valign="middle"/>Intersect</a>		
+		</div>
 	</div>
 
 <div name="1" id="1" style="display:block;">

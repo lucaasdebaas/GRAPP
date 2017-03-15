@@ -277,3 +277,22 @@ function ymaxonclick(formule1, formule2,xmin,xmax,ymin,ymax) {
 		
 	}
 	
+	function Value() {
+	
+	}
+	
+	function Zero() {
+	
+	}
+	
+	function Maximum() {
+	
+	}
+	
+	function Minimum() {
+	
+	}
+	
+	function Intersect() {
+	
+	}
