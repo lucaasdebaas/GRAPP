@@ -97,7 +97,6 @@
 			<div class="formrow"> <label id="ymaxlabel"class="windowsettingslabel">X-max  </label>	<input class="windowsettingsinput" id="xmax" type="text" readonly onclick="xmaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
 			<div class="formrow"> <label id="yminlabel"class="windowsettingslabel">Y-min	</label>	<input class="windowsettingsinput" id="ymin" type="text" readonly onclick="yminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
 			<div class="formrow"> <label id="ymaxlabel"class="windowsettingslabel">Y-max	</label>	<input class="windowsettingsinput" id="ymax" type="text" readonly onclick="ymaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
-			<div><input type="button" id="button" value="Run" onclick="run(formule1.value, formule2.value, xmin.value, xmax.value, ymin.value, ymax.value)" style="width:150px;"></div>
 			
 			<script>
 			
@@ -129,7 +128,7 @@
         	<input TYPE="button" NAME="x"   		VALUE="x" 				OnClick= "_x()">
             <input TYPE="button" NAME=" ( "   		VALUE="  (  " 			OnCLick=" _linkerHaakje()">
             <input TYPE="button" NAME=" ) " 		VALUE="  )  " 			OnClick="_rechterHaakje()">
-            <input TYPE="button" NAME="backspace" 	VALUE=" &larr; " 		OnClick="backspace()">
+            <input TYPE="button" NAME="backspace" 	VALUE=" &larr; " 		OnClick="_backspace()">
             <input TYPE="button" NAME="one"   		VALUE="  1  " 			OnClick="_1()">
             <input TYPE="button" NAME="two"   		VALUE="  2  " 			OnCLick="_2()">
             <input TYPE="button" NAME="three" 		VALUE="  3  " 			OnClick="_3()">
@@ -144,8 +143,8 @@
             <input TYPE="button" NAME="plus" 		VALUE="  +  " 			OnClick="optellen()"			class="operator">
             <input TYPE="button" NAME="dot" 		VALUE="  .  " 			OnClick="_punt()">
             <input TYPE="button" NAME="zero"  		VALUE="  0  " 			OnClick="_0()">
-            <input TYPE="button" NAME="enter"   	VALUE="  =  " 			OnClick="calculate()">
-            <input TYPE="button" NAME="minus" 		VALUE="  -  " 			OnClick="aftrekken()"			class="operator">
+            <input TYPE="button" NAME="enter"   	VALUE="  RUN" 			OnClick="run()">
+            <input TYPE="button" NAME="minus" 		VALUE="  -  " 			OnClick="aftrekken(formule1.value, formule2.value, xmin.value, xmax.value, ymin.value, ymax.value)"			class="operator">
 		</div>
 	</div>
 </form>
@@ -333,8 +332,8 @@
 			
 				document.getElementById("1").style.display = "none";
 				document.getElementById("2").style.display = "block";
-				document.getElementById("formule1weergave").innerHTML = "Functie 1: y = " + formule1; 
-				document.getElementById("formule2weergave").innerHTML = "Functie 2: y = " + formule2; 
+				document.getElementById("formule1weergave").innerHTML = "Functie 1: y = " + this.formule1.value; 
+				document.getElementById("formule2weergave").innerHTML = "Functie 2: y = " + this.formule2.value; 
 				
 				var myGraph = new Graph({
 					
@@ -384,11 +383,17 @@
 	  
     </script>
 
-	<button type="button"  onclick="back()" style="height:25px; width: 150px;">Back to graphsettings</button> 
+	<button type="button"  onclick="Back()" style="height:25px; width: 150px;">Back to graphsettings</button> 
+		<button type="button"  onclick="Clearandback()" style="height:25px; width: 300px;">Clear and Back to graphsettings</button> 
 	
 	<script>
 	
-	function back() {
+	function Clearandback() {
+		location.reload();
+		Back(); 	
+	}
+	
+	function Back() {
 	document.getElementById("1").style.display = "block";
 	document.getElementById("2").style.display = "none";
 	}

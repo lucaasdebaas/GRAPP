@@ -194,13 +194,11 @@ function ymaxonclick(formule1, formule2,xmin,xmax,ymin,ymax) {
 	function aftrekken() { //aftrekken
 		var input = document.querySelectorAll('[activeFunction = "1"]')[0];
 		input.value += "-";
-		
 	}	
 	
-
-	function backspace() { //backspace
+	function _backspace() { //backspace
 		var input = document.querySelectorAll('[activeFunction = "1"]')[0];
-		input.value = graphsettings.formule1.value.slice(0, -1);
+		input.value = input.value.slice(0, -1);
 		
 	}	
 	
