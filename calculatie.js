@@ -3,6 +3,12 @@ var ans="";
 
 function calculate() {
 	var berekening = invoer;
+	for (i=0; i<tekens; i++) {
+		if (berekening.slice(i,i+2) == "+*" || ) {
+		    //foutmelding
+		}
+	}
+	    
 	var berekening0 = berekening.replace("--", "+");  //dubbele min vervangen door plus
 	var berekening1 = berekening0.replace("log", "1/Math.LN10 * Math.log"); //Math.log berekent de natuurlijke logaritme, daarom deze omslachtige manier.
 	var berekening2 = berekening1.replace("ln", "Math.log");
