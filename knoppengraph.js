@@ -275,7 +275,99 @@ function ymaxonclick(formule1, formule2,xmin,xmax,ymin,ymax) {
 		
 	}
 	
-	function Value() {
+	var phasef = 0;
+	
+	function Valueboxtoggle() {
+		if(phasef == 0) {
+		
+		document.getElementById("2").style.display = "none";
+		document.getElementById("value").style.display = "block";
+		closeNav();
+		phasef = 1;
+		document.body.style.background = "#999999";
+		
+		} else if(phasef == 1) {
+		
+		document.getElementById("2").style.display = "block";
+		document.getElementById("value").style.display = "none";
+		document.body.style.background = "white";
+		phasef = 0;
+		}
+	}
+	
+	function Zeroboxtoggle() {
+		if(phasef == 0) {
+		
+		document.getElementById("2").style.display = "none";
+		document.getElementById("Zero").style.display = "block";
+		closeNav();
+		phasef = 1;
+		document.body.style.background = "#999999";
+		
+		} else if(phasef == 1) {
+		
+		document.getElementById("2").style.display = "block";
+		document.getElementById("Zero").style.display = "none";
+		document.body.style.background = "white";
+		phasef = 0;
+		}
+	}
+	
+	function Maximumboxtoggle() {
+		if(phasef == 0) {
+		
+		document.getElementById("2").style.display = "none";
+		document.getElementById("Maximum").style.display = "block";
+		closeNav();
+		phasef = 1;
+		document.body.style.background = "#999999";
+		
+		} else if(phasef == 1) {
+		
+		document.getElementById("2").style.display = "block";
+		document.getElementById("Maximum").style.display = "none";
+		document.body.style.background = "white";
+		phasef = 0;
+		}
+	}
+	
+	function Minimumboxtoggle() {
+		if(phasef == 0) {
+		
+		document.getElementById("2").style.display = "none";
+		document.getElementById("Minimum").style.display = "block";
+		closeNav();
+		phasef = 1;
+		document.body.style.background = "#999999";
+		
+		} else if(phasef == 1) {
+		
+		document.getElementById("2").style.display = "block";
+		document.getElementById("Minimum").style.display = "none";
+		document.body.style.background = "white";
+		phasef = 0;
+		}
+	}
+	
+	function Intersectboxtoggle() {
+		if(phasef == 0) {
+		
+		document.getElementById("2").style.display = "none";
+		document.getElementById("Intersect").style.display = "block";
+		closeNav();
+		phasef = 1;
+		document.body.style.background = "#999999";
+		
+		} else if(phasef == 1) {
+		
+		document.getElementById("2").style.display = "block";
+		document.getElementById("Intersect").style.display = "none";
+		document.body.style.background = "white";
+		phasef = 0;
+		}
+	}
+	
+	function Value(){
 	
 	}
 	

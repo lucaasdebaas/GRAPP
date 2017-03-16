@@ -79,15 +79,17 @@
   		<a href="index.html"><img alt="123" class="sidenavimg" src="calculator.png" height="25px" width="25" valign="middle"/>Calculator</a>
   		<a class="active" onclick="closeNav()"><img class="sidenavimg" alt="graph" src="graph.png" height="25px" width="25" valign="middle"/>Graph</a>
 		<hr color="#999999" width="90%">
-		<div class="sidenavtext">
-		<a onclick="Value()"><img class="sidenavimg" src="Value_N.png" height="25" width="25" valign="middle"/>Value</a>
-		<a onclick="Zero()"><img class="sidenavimg" src="Zero.png" height="25" width="25" valign="middle"/>Zero</a>
-		<a onclick="Maximum()"><img class="sidenavimg" src="Maximum.png" height="25" width="25" valign="middle"/>Maximum</a>
-		<a onclick="Minimum()"><img class="sidenavimg" src="Minimum.png" height="25" width="25" valign="middle"/>Minimum</a>
-		<a onclick="Intersect()"><img class="sidenavimg" src="Intersect.png" height="25" width="25" valign="middle"/>Intersect</a>		
+		<div id="sidenavtext" class="sidenavtext" style="display:none;">
+		<a onclick="Valueboxtoggle()"><img class="sidenavimg" src="Value_N.png" height="25" width="25" valign="middle"/>Value</a>
+		<a onclick="Zeroboxtoggle()"><img class="sidenavimg" src="Zero.png" height="25" width="25" valign="middle"/>Zero</a>
+		<a onclick="Maximumboxtoggle()"><img class="sidenavimg" src="Maximum.png" height="25" width="25" valign="middle"/>Maximum</a>
+		<a onclick="Minimumboxtoggle()"><img class="sidenavimg" src="Minimum.png" height="25" width="25" valign="middle"/>Minimum</a>
+		<a onclick="Intersectboxtoggle()"><img class="sidenavimg" src="Intersect.png" height="25" width="25" valign="middle"/>Intersect</a>		
 		</div>
 	</div>
+	
 
+	
 <div name="1" id="1" style="display:block;">
 	<div name="graphsettingsform" id="graphsettingsform"> 
 		<form name="graphsettings" id="graphsettings">
@@ -102,9 +104,41 @@
 			
 			</script>
 		</form>
+		</div>
 	</div>
 	
+	
+	
+
 	<form name="Calc">
+	
+	<div id="value" class="functionbox">
+	value
+	</div>
+	
+	<div id="Zero" class="functionbox">
+	zero
+	</div>
+	
+	<div id="Maximum" class="functionbox">
+	maximum
+	</div>
+	
+	<div id="Minimum" class="functionbox">
+	minimum
+	</div>
+	
+	<div id="Intersect" class="functionbox">
+	intersect
+	</div>
+	
+	
+	
+	
+	
+	
+		<div name="buttons" id="buttons" style="display:block;">
+	
 <!-- Swipemenu -->
 	<div id="mySwipemenu" class="swipemenu">
 			<input TYPE="button" NAME="INV" VALUE="INV" OnClick= "" class="operator">
@@ -147,11 +181,12 @@
             <input TYPE="button" NAME="minus" 		VALUE="  -  " 			OnClick="aftrekken(formule1.value, formule2.value, xmin.value, xmax.value, ymin.value, ymax.value)"			class="operator">
 		</div>
 	</div>
+	</div>
 </form>
 </div>
 	
 	
-<div id="2" style="display:none; height:70%; width:100%;">
+<div id="2" style="display:none;" height:70%; width:100%;">
 	<div><div id="formule1weergave" style="width:50%"></div><div id="formule2weergave" style="width:50%"></div></div>
     <canvas id="myCanvas" style="width:100%; height:100%;"></canvas>
     <script>
@@ -328,10 +363,11 @@
 		
 		if (xmin && xmax && ymin && ymax !== null) {
 		
-			if (xmin && ymin < 0 && xmax && ymax > 0) {
-			
+			if (xmin < xmax && ymin < ymax) {
+			   	document.getElementById("sidenavtext").style.display = "block";
 				document.getElementById("1").style.display = "none";
 				document.getElementById("2").style.display = "block";
+				document.getElementById("buttons").style.display = "none";
 				document.getElementById("formule1weergave").innerHTML = "Functie 1: y = " + this.formule1.value; 
 				document.getElementById("formule2weergave").innerHTML = "Functie 2: y = " + this.formule2.value; 
 				
@@ -386,8 +422,8 @@
 	<button type="button"  onclick="Back()" style="height:25px; width: 150px;">Back to graphsettings</button> 
 		<button type="button"  onclick="Clearandback()" style="height:25px; width: 300px;">Clear and Back to graphsettings</button> 
 	
-	<script>
 	
+	<script>
 	function Clearandback() {
 		location.reload();
 		Back(); 	
@@ -396,11 +432,13 @@
 	function Back() {
 	document.getElementById("1").style.display = "block";
 	document.getElementById("2").style.display = "none";
+	document.getElementById("buttons").style.display = "block";
+	document.getElementById("value").style.display = "none";
 	}
 	</script>
 </div>
 
-
+	
 
 </body> 
 </html>
