@@ -116,13 +116,13 @@ function calculate() {
 	
 	
 	//Hogere machtswortelberekenen
-	
+	console.log(berekening10);
 	var tekens = berekening10.length;
 	var berekening11 = "";  //deze drie variabelen worden aangemaakt om later in een berekening te testen of ze leeg zijn
 	var grondtal = "";
 	var exponent = "";
 	for (i=0; i<tekens; i++) {
-		if (berekening10.slice(i,i+5) == "mWort") {
+		if (berekening10.slice(i,i+5) == "xWort") {
 			//Grondtal van de macht zoeken
 			if (berekening10.slice(i-1,i) == ")") {  //als het teken voor de macht een sluithaakje is, dan
 				var sluithaakjes = 0;  // dit is het aantal sluithaakjes wat gevonden wordt voor de macht
@@ -153,6 +153,7 @@ function calculate() {
 				}
 			}
 			if (grondtal == "") {  //als er nog geen grondtal gevonden is, neem dat de eerste
+			console.log("HELLO");
 			grondtal = eval(berekening10.slice(0,i));
 			var berekening11 = berekening10.replace(berekening10.slice(0,i), "grondtal");
 			}
@@ -181,14 +182,15 @@ function calculate() {
 	
 	//De eigenlijke machtswortel berekenen
 	var machtswortel = Math.pow(exponent, 1/grondtal);
-	if (berekening11 == "") {  //als er geen machtberekening is, deze overslaan en berekening10 gelijkstellen aan berekening8
+	console.log(machtswortel);
+	if (berekening11 == "") {  //als er geen machtberekening is, deze overslaan en berekening12 gelijkstellen aan berekening10
 		var berekening12 = berekening10;
 	}
 	else {
-		var berekening12 = berekening10.replace("grondtalmachtexponent", machtswortel);
+		var berekening12 = berekening11.replace("grondtalxWortexponent", machtswortel);
 	}
 	
-	
+	console.log(berekening12);
 	//De gehele berekening uitvoeren en afronden
 	var uitvoer = eval(berekening12);
 	Calc.output.value = uitvoer;
