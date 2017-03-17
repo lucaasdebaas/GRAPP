@@ -193,7 +193,7 @@ function calculate() {
 	console.log(berekening12);
 	//De gehele berekening uitvoeren en afronden
 	if (berekening12 = "error") {
-		var uitvoer = "Syntax error";
+		var uitvoer == "Syntax error";
 	}
 	else {
 		var uitvoer = eval(berekening12);
