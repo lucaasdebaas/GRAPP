@@ -86,8 +86,8 @@
 	
 
 	function _backspace() { //backspace
-		Calc.output.value = Calc.output.value.slice(0, -1);
-		invoer = invoer.slice(0, -1);
+		Calc.output.value = " ";
+		invoer = " ";
 	}
 	
 	function _ANS() {
