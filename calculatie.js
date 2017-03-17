@@ -4,7 +4,7 @@ var ans="";
 function calculate() {
 	var berekening = invoer;
 	for (i=0; i<tekens; i++) {
-		if (berekening.slice(i,i+2) == "*/" || berekening.slice(i,i+2) == "/*" || berekening.slice(i,i+2) == "*+" || berekening.slice(i,i+2) == "/+" || berekening.slice(i,i+2) == "-+" || berekening.slice(i,i+2) == "-*" || berekening.slice(i,i+2) == "+*" || berekening.slice(i,i+2) == "-/" || berekening.slice(i,i+2) == "+/" || berekening.slice(i,i+2) == "**" || berekening.slice(i,i+2) == "//") {
+		if (berekening.slice(i,i+2) == "*/" || berekening.slice(i,i+2) == "/*" || berekening.slice(i,i+2) == "*+" || berekening.slice(i,i+2) == "/+" || berekening.slice(i,i+2) == "-+" || berekening.slice(i,i+2) == "-*" || berekening.slice(i,i+2) == "+*" || berekening.slice(i,i+2) == "-/" || berekening.slice(i,i+2) == "+/" || berekening.slice(i,i+2) == "**" || berekening.slice(i,i+2) == "//" || berekening.slice(i,i+2) == "++") {
 		    berekening = "error";  //De variabele berekening is error, zodat de variabele uitvoer undefined zal zijn.
 		}
 	}
