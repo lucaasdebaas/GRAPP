@@ -4,7 +4,7 @@ var ans="";
 function calculate() {
 	var berekening = invoer;
 	for (i=0; i<tekens; i++) {
-		if (berekening.slice(i,i+2) == "*/" || berekening.slice(i,i+2) == "/*" || berekening.slice(i,i+2) == "*+" || berekening.slice(i,i+2) == "/+" || berekening.slice(i,i+2) == "-+" || berekening.slice(i,i+2) == "-*" || berekening.slice(i,i+2) == "+*" || berekening.slice(i,i+2) == "-/" || berekening.slice(i,i+2) == "+/") {
+		if (berekening.slice(i,i+2) == "*/" || berekening.slice(i,i+2) == "/*" || berekening.slice(i,i+2) == "*+" || berekening.slice(i,i+2) == "/+" || berekening.slice(i,i+2) == "-+" || berekening.slice(i,i+2) == "-*" || berekening.slice(i,i+2) == "+*" || berekening.slice(i,i+2) == "-/" || berekening.slice(i,i+2) == "+/" || berekening.slice(i,i+2) == "**" || berekening.slice(i,i+2) == "//") {
 		    berekening = "error";  //De variabele berekening is error, zodat de variabele uitvoer undefined zal zijn.
 		}
 	}
@@ -192,7 +192,12 @@ function calculate() {
 	
 	console.log(berekening12);
 	//De gehele berekening uitvoeren en afronden
-	var uitvoer = eval(berekening12);
+	if (berekening12 = "error") {
+		var uitvoer = "Syntax error";
+	}
+	else {
+		var uitvoer = eval(berekening12);
+	}
 	Calc.output.value = uitvoer;
 	invoer = uitvoer;
 	
