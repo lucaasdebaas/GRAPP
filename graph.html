@@ -1,14 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>Grapp</title>
-
-  <style type="text/css">
-    body, html {
-      font-family: sans-serif;
-    }
-  </style>
-
+  <title>GRAPP</title>
   <link rel="stylesheet" type="text/css"  href="style.css">
 	<script src="menu.js"></script>
 	<script>
@@ -91,52 +84,43 @@
 
 	
 <div name="1" id="1" style="display:block;">
-	<div name="graphsettingsform" id="graphsettingsform"> 
 		<form name="graphsettings" id="graphsettings">
-			<div class="formrow"> <label class="formulelabel">Functie 1  		</label>	<input class="formuleinput" name = "formule1" id="formule1" type="text" readonly onclick="formule1onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input> </div>
-			<div class="formrow"> <label class="formulelabel">Functie 2  		</label>	<input class="formuleinput" name = "formule2" id="formule2" type="text" readonly onclick="formule2onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input> </div>
-			<div class="formrow"> <label id="xminlabel"class="windowsettingslabel">X-min  </label>	<input class="windowsettingsinput" id="xmin" type="text" readonly onclick="xminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
-			<div class="formrow"> <label id="ymaxlabel"class="windowsettingslabel">X-max  </label>	<input class="windowsettingsinput" id="xmax" type="text" readonly onclick="xmaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
-			<div class="formrow"> <label id="yminlabel"class="windowsettingslabel">Y-min	</label>	<input class="windowsettingsinput" id="ymin" type="text" readonly onclick="yminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
-			<div class="formrow"> <label id="ymaxlabel"class="windowsettingslabel">Y-max	</label>	<input class="windowsettingsinput" id="ymax" type="text" readonly onclick="ymaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
-			
-			<script>
-			
-			</script>
+				<input class="formuleinput" 		name = "formule1" 	id="formule1" 	type="text" placeholder="function 1" 	readonly onclick="formule1onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input>
+				<input class="formuleinput" 		name = "formule2" 	id="formule2" 	type="text" placeholder="function 2" 	readonly onclick="formule2onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input>
+			<table>
+			<tr>
+				<td class="label" id="xminlab" onclick="xminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">min X</td>
+				<td class="input"><input class="windowsettingsinput" 			id="xmin" 		type="text" readonly onclick="xminonclick(formule1,formule2,xmin,xmax,ymin,ymax)" /></td>
+				<td class="label" id="xmaxlab" onclick="xmaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">max X</td>
+				<td class="input"><input class="windowsettingsinput" 			id="xmax" 		type="text" readonly onclick="xmaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)" /></td>
+			</tr>
+			<tr>
+				<td class="label" id="yminlab" onclick="yminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">min Y</td>
+				<td class="input"><input class="windowsettingsinput" 			id="ymin" 		type="text" readonly onclick="yminonclick(formule1,formule2,xmin,xmax,ymin,ymax)" /></td>
+				<td class="label" id="ymaxlab" onclick="ymaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">max Y</td>
+				<td class="input"><input class="windowsettingsinput" 			id="ymax" 		type="text" readonly onclick="ymaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)" /></td>
+			</table>
 		</form>
+</div>
+	
+	
+	
+<form name="Calc">
+		<div id="value" class="functionbox">
+		value
 		</div>
-	</div>
-	
-	
-	
-
-	<form name="Calc">
-	
-	<div id="value" class="functionbox">
-	value
-	</div>
-	
-	<div id="Zero" class="functionbox">
-	zero
-	</div>
-	
-	<div id="Maximum" class="functionbox">
-	maximum
-	</div>
-	
-	<div id="Minimum" class="functionbox">
-	minimum
-	</div>
-	
-	<div id="Intersect" class="functionbox">
-	intersect
-	</div>
-	
-	
-	
-	
-	
-	
+		<div id="Zero" class="functionbox">
+		zero
+		</div>
+		<div id="Maximum" class="functionbox">
+		maximum
+		</div>
+		<div id="Minimum" class="functionbox">
+		minimum
+		</div>
+		<div id="Intersect" class="functionbox">
+		intersect
+		</div>
 		<div name="buttons" id="buttons" style="display:block;">
 	
 <!-- Swipemenu -->
@@ -162,7 +146,7 @@
         	<input TYPE="button" NAME="x"   		VALUE="x" 				OnClick= "_x()">
             <input TYPE="button" NAME=" ( "   		VALUE="  (  " 			OnCLick=" _linkerHaakje()">
             <input TYPE="button" NAME=" ) " 		VALUE="  )  " 			OnClick="_rechterHaakje()">
-            <input TYPE="button" NAME="backspace" 	VALUE=" &larr; " 		OnClick="_backspace()">
+            <input TYPE="button" NAME="backspace" 	VALUE=" &larr; " 		OnClick="_backspace()"			class="operator">
             <input TYPE="button" NAME="one"   		VALUE="  1  " 			OnClick="_1()">
             <input TYPE="button" NAME="two"   		VALUE="  2  " 			OnCLick="_2()">
             <input TYPE="button" NAME="three" 		VALUE="  3  " 			OnClick="_3()">
@@ -182,12 +166,11 @@
 		</div>
 	</div>
 	</div>
-</form>
-</div>
+</form>	
 	
-	
-<div id="2" style="display:none;" height:70%; width:100%;">
-	<div><div id="formule1weergave" style="width:50%"></div><div id="formule2weergave" style="width:50%"></div></div>
+<div id="2" style="display:none; height:70%; width:100%;">
+	<div><div id="formule1weergave" style="width:50%"></div>
+	<div id="formule2weergave" style="width:50%"></div></div>
     <canvas id="myCanvas" style="width:100%; height:100%;"></canvas>
     <script>
       function Graph(config) {
@@ -355,12 +338,32 @@
       
 	  
 	  function run(formule1,formule2, xmin,ymin,xmax,ymax) {
-	
-		var xmin = this.xmin.value; 
-		var xmax = this.xmax.value; 
-		var ymin = -1 * this.ymax.value; // Gelieve deze rare constructie niet te verbeteren, want het bovenstaande programma spiegelt de y-as in de x-as
-		var ymax = -1 * this.ymin.value; // Gelieve deze rare constructie niet te verbeteren, want het bovenstaande programma spiegelt de y-as in de x-as
 		
+		// Checken of window-variable niet leeg is, anders vervangen door 10 of -10
+		if ((typeof this.xmin.value !== 'number') || (this.xmin.value.length == 0)) {
+			var xmin = -10;
+		} else {
+			var xmin = this.xmin.value; 
+		}
+		
+		if ((typeof this.xmax.value !== 'number') || (this.xmax.value.length == 0)) {
+			var xmax = 10;
+		} else {
+			var xmax = this.xmax.value; 
+		}
+				
+		if ((typeof this.ymax.value !== 'number') || (this.ymax.value.length == 0)) {
+			var ymin = -10; 
+		} else {
+			var ymin = -1 * this.ymax.value; // Gelieve deze rare constructie niet te verbeteren, want het bovenstaande programma spiegelt de y-as in de x-as
+		}
+		
+		if ((typeof this.ymin.value !== 'number') || (this.ymin.value.length == 0)) {
+			var ymax = 10; 
+		} else {
+			var ymax = -1 * this.ymin.value; // Gelieve deze rare constructie niet te verbeteren, want het bovenstaande programma spiegelt de y-as in de x-as
+		}
+				
 		if (xmin && xmax && ymin && ymax !== null) {
 		
 			if (xmin < xmax && ymin < ymax) {
@@ -412,8 +415,7 @@
 				}, 'blue', 2);
 				
 			} 
-				
-		};
+		  }
 	  };
 	 
 	  
