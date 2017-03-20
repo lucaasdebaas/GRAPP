@@ -1,14 +1,10 @@
 function formule1onclick(formule1, formule2,xmin,xmax,ymin,ymax) {
-		formule1.style.backgroundColor = "#efefef";
-		formule2.style.backgroundColor = "white";
-		xmin.style.backgroundColor = "white";
-			document.getElementById("xminlab").style.backgroundColor = "white";
-		xmax.style.backgroundColor = "white";
-			document.getElementById("xmaxlab").style.backgroundColor = "white";
-		ymin.style.backgroundColor = "white";
-			document.getElementById("yminlab").style.backgroundColor = "white";
-		ymax.style.backgroundColor = "white";
-			document.getElementById("ymaxlab").style.backgroundColor = "white";
+		formule1.style.background = "#d3d9e2";
+		formule2.style.background = "white";
+		xmin.style.background = "white";
+		xmax.style.background = "white";
+		ymin.style.background = "white";
+		ymax.style.background = "white";
 		formule1.setAttribute('activeFunction', '1'); 
 		formule2.setAttribute('activeFunction', '0'); 
 		xmin.setAttribute('activeFunction', '0'); 
@@ -18,16 +14,12 @@ function formule1onclick(formule1, formule2,xmin,xmax,ymin,ymax) {
 	}
 
 function formule2onclick(formule1, formule2,xmin,xmax,ymin,ymax) {
-		formule2.style.backgroundColor = "#efefef";
-		formule1.style.backgroundColor = "white";
-		xmin.style.backgroundColor = "white";
-			document.getElementById("xminlab").style.backgroundColor = "white";
-		xmax.style.backgroundColor = "white";
-			document.getElementById("xmaxlab").style.backgroundColor = "white";
-		ymin.style.backgroundColor = "white";
-			document.getElementById("yminlab").style.backgroundColor = "white";
-		ymax.style.backgroundColor = "white";
-			document.getElementById("ymaxlab").style.backgroundColor = "white";
+		formule2.style.background = "#d3d9e2";
+		formule1.style.background = "white";
+		xmin.style.background = "white";
+		xmax.style.background = "white";
+		ymin.style.background = "white";
+		ymax.style.background = "white";
 		formule1.setAttribute('activeFunction', '0'); 
 		formule2.setAttribute('activeFunction', '1'); 
 		xmin.setAttribute('activeFunction', '0'); 
@@ -37,16 +29,12 @@ function formule2onclick(formule1, formule2,xmin,xmax,ymin,ymax) {
 	}
 	
 function xminonclick(formule1, formule2,xmin,xmax,ymin,ymax) {
-		formule1.style.backgroundColor = "white";
-		formule2.style.backgroundColor = "white";
-		xmin.style.backgroundColor = "#efefef";
-			document.getElementById("xminlab").style.backgroundColor = "#efefef";
-		xmax.style.backgroundColor = "white";
-			document.getElementById("xmaxlab").style.backgroundColor = "white";
-		ymin.style.backgroundColor = "white";
-			document.getElementById("yminlab").style.backgroundColor = "white";
-		ymax.style.backgroundColor = "white";
-			document.getElementById("ymaxlab").style.backgroundColor = "white";
+		formule1.style.background = "#white";
+		formule2.style.background = "white";
+		xmin.style.background = "#d3d9e2";
+		xmax.style.background = "white";
+		ymin.style.background = "white";
+		ymax.style.background = "white";
 		formule1.setAttribute('activeFunction', '0'); 
 		formule2.setAttribute('activeFunction', '0'); 
 		xmin.setAttribute('activeFunction', '1'); 
@@ -56,16 +44,12 @@ function xminonclick(formule1, formule2,xmin,xmax,ymin,ymax) {
 	}
 	
 function xmaxonclick(formule1, formule2,xmin,xmax,ymin,ymax) {
-		formule1.style.backgroundColor = "white";
-		formule2.style.backgroundColor = "white";
-		xmin.style.backgroundColor = "white";
-			document.getElementById("xminlab").style.backgroundColor = "white";
-		xmax.style.backgroundColor = "#efefef";
-			document.getElementById("xmaxlab").style.backgroundColor = "#efefef";
-		ymin.style.backgroundColor = "white";
-			document.getElementById("yminlab").style.backgroundColor = "white";
-		ymax.style.backgroundColor = "white";
-			document.getElementById("ymaxlab").style.backgroundColor = "white";
+		formule1.style.background = "white";
+		formule2.style.background = "white";
+		xmin.style.background = "white";
+		xmax.style.background = "#d3d9e2";
+		ymin.style.background = "white";
+		ymax.style.background = "white";
 		formule1.setAttribute('activeFunction', '0'); 
 		formule2.setAttribute('activeFunction', '0'); 
 		xmin.setAttribute('activeFunction', '0'); 
@@ -75,16 +59,12 @@ function xmaxonclick(formule1, formule2,xmin,xmax,ymin,ymax) {
 	}
 
 function yminonclick(formule1, formule2,xmin,xmax,ymin,ymax) {
-		formule1.style.backgroundColor = "white";
-		formule2.style.backgroundColor = "white";
-		xmin.style.backgroundColor = "white";
-			document.getElementById("xminlab").style.backgroundColor = "white";
-		xmax.style.backgroundColor = "white";
-			document.getElementById("xmaxlab").style.backgroundColor = "white";
-		ymin.style.backgroundColor = "#efefef";
-			document.getElementById("yminlab").style.backgroundColor = "#efefef";
-		ymax.style.backgroundColor = "white";
-			document.getElementById("ymaxlab").style.backgroundColor = "white";
+		formule1.style.background = "white";
+		formule2.style.background = "white";
+		xmin.style.background = "white";
+		xmax.style.background = "white";
+		ymin.style.background = "#d3d9e2";
+		ymax.style.background = "white";
 		formule1.setAttribute('activeFunction', '0'); 
 		formule2.setAttribute('activeFunction', '0'); 
 		xmin.setAttribute('activeFunction', '0'); 
@@ -94,16 +74,12 @@ function yminonclick(formule1, formule2,xmin,xmax,ymin,ymax) {
 	}
 
 function ymaxonclick(formule1, formule2,xmin,xmax,ymin,ymax) {
-		formule1.style.backgroundColor = "white";
-		formule2.style.backgroundColor = "white";
-		xmin.style.backgroundColor = "white";
-			document.getElementById("xminlab").style.backgroundColor = "white";
-		xmax.style.backgroundColor = "white";
-			document.getElementById("xmaxlab").style.backgroundColor = "white";
-		ymin.style.backgroundColor = "white";
-			document.getElementById("yminlab").style.backgroundColor = "white";
-		ymax.style.backgroundColor = "#efefef";
-			document.getElementById("ymaxlab").style.backgroundColor = "#efefef";
+		formule1.style.background = "white";
+		formule2.style.background = "white";
+		xmin.style.background = "white";
+		xmax.style.background = "white";
+		ymin.style.background = "white";
+		ymax.style.background = "#d3d9e2";
 		formule1.setAttribute('activeFunction', '0'); 
 		formule2.setAttribute('activeFunction', '0'); 
 		xmin.setAttribute('activeFunction', '0'); 
@@ -295,6 +271,118 @@ function ymaxonclick(formule1, formule2,xmin,xmax,ymin,ymax) {
 	
 	function _macht() {
 		var input = document.querySelectorAll('[activeFunction = "1"]')[0];
-		input.value += "&circ;(";
+		input.value += "&circ;";
 		
+	}
+	
+	var phasef = 0;
+	
+	function Valueboxtoggle() {
+		if(phasef == 0) {
+		
+		document.getElementById("2").style.display = "none";
+		document.getElementById("value").style.display = "block";
+		closeNav();
+		phasef = 1;
+		document.body.style.background = "#999999";
+		
+		} else if(phasef == 1) {
+		
+		document.getElementById("2").style.display = "block";
+		document.getElementById("value").style.display = "none";
+		document.body.style.background = "white";
+		phasef = 0;
+		}
+	}
+	
+	function Zeroboxtoggle() {
+		if(phasef == 0) {
+		
+		document.getElementById("2").style.display = "none";
+		document.getElementById("Zero").style.display = "block";
+		closeNav();
+		phasef = 1;
+		document.body.style.background = "#999999";
+		
+		} else if(phasef == 1) {
+		
+		document.getElementById("2").style.display = "block";
+		document.getElementById("Zero").style.display = "none";
+		document.body.style.background = "white";
+		phasef = 0;
+		}
+	}
+	
+	function Maximumboxtoggle() {
+		if(phasef == 0) {
+		
+		document.getElementById("2").style.display = "none";
+		document.getElementById("Maximum").style.display = "block";
+		closeNav();
+		phasef = 1;
+		document.body.style.background = "#999999";
+		
+		} else if(phasef == 1) {
+		
+		document.getElementById("2").style.display = "block";
+		document.getElementById("Maximum").style.display = "none";
+		document.body.style.background = "white";
+		phasef = 0;
+		}
+	}
+	
+	function Minimumboxtoggle() {
+		if(phasef == 0) {
+		
+		document.getElementById("2").style.display = "none";
+		document.getElementById("Minimum").style.display = "block";
+		closeNav();
+		phasef = 1;
+		document.body.style.background = "#999999";
+		
+		} else if(phasef == 1) {
+		
+		document.getElementById("2").style.display = "block";
+		document.getElementById("Minimum").style.display = "none";
+		document.body.style.background = "white";
+		phasef = 0;
+		}
+	}
+	
+	function Intersectboxtoggle() {
+		if(phasef == 0) {
+		
+		document.getElementById("2").style.display = "none";
+		document.getElementById("Intersect").style.display = "block";
+		closeNav();
+		phasef = 1;
+		document.body.style.background = "#999999";
+		
+		} else if(phasef == 1) {
+		
+		document.getElementById("2").style.display = "block";
+		document.getElementById("Intersect").style.display = "none";
+		document.body.style.background = "white";
+		phasef = 0;
+		}
+	}
+	
+	function Value(){
+	
+	}
+	
+	function Zero() {
+	
+	}
+	
+	function Maximum() {
+	
+	}
+	
+	function Minimum() {
+	
+	}
+	
+	function Intersect() {
+	
 	}
