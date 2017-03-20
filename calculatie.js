@@ -9,8 +9,9 @@ function calculate() {
 		    berekening = "error";  //De variabele berekening is error, zodat de variabele uitvoer undefined zal zijn.
 		}
 	}
-	
-	for (j=1; j<lengte; j++) {
+	var openhaakjes = 0;
+	var sluithaakjes = 0;
+	for (j=0; j<lengte; j++) {
 		if (berekening.substr(j,1) == ")") {
 			sluithaakjes += 1;
 		}
@@ -19,7 +20,7 @@ function calculate() {
 		}
 	}
 	if (openhaakjes != sluithaakjes) {
-		berekening == "error";
+		berekening = "error";
 	}
 	
 	var berekening0 = berekening.replace("--", "+");  //dubbele min vervangen door plus
