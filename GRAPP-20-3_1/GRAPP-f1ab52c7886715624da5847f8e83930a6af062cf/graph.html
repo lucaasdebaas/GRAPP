@@ -1,0 +1,444 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Grapp</title>
+
+  <style type="text/css">
+    body, html {
+      font-family: sans-serif;
+    }
+  </style>
+
+  <link rel="stylesheet" type="text/css"  href="style.css">
+	<script src="menu.js"></script>
+	<script>
+		//trigger swipe
+	document.addEventListener('touchstart', handleTouchStart, false);        
+	document.addEventListener('touchmove', handleTouchMove, false);
+
+	var xDown = null;                                                        
+	var yDown = null;                                                        
+
+	function handleTouchStart(evt) {                                         
+		xDown = evt.touches[0].clientX;                                      
+		yDown = evt.touches[0].clientY;                                      
+	};                                                
+
+	function handleTouchMove(evt) {
+		if ( ! xDown || ! yDown ) {
+			return;
+		}
+
+    var xUp = evt.touches[0].clientX;                                    
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+	
+	
+	
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+        if ( xDiff > 0 ) {
+		//left swipe
+		if(v == 1) {
+			 closeNav();
+		 } else {
+            openSwipe();
+			}
+        } else {
+		//right swipe
+            closeSwipe();
+        }                       
+    } else {
+        if ( yDiff > 0 ) {
+            /* up swipe (niet in gebruik) */ 
+        } else { 
+            /* down swipe (niet in gebruik) */
+        }                                                                 
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;                                             
+}	
+	</script>
+	<script language="javascript" src="knoppengraph.js"></script>
+	<meta charset="utf-8">
+	
+</head>
+
+
+<body>
+
+
+
+<!-- Header, indien nodig gebruik dit tekentje voor hamburgermenu en pas padding aan: &#9776; -->
+<div id="header"><a id="hamburger" onclick="toggleNav()"><img src="hamburger.svg" height="18px"/></a><span id="grapp">grapp</span></div>  
+
+<!-- Sidenav -->
+	<div id="mySidenav" class="sidenav">
+  		<a href="index.html"><img alt="123" class="sidenavimg" src="calculator.png" height="25px" width="25" valign="middle"/>Calculator</a>
+  		<a class="active" onclick="closeNav()"><img class="sidenavimg" alt="graph" src="graph.png" height="25px" width="25" valign="middle"/>Graph</a>
+		<hr color="#999999" width="90%">
+		<div id="sidenavtext" class="sidenavtext" style="display:none;">
+		<a onclick="Valueboxtoggle()"><img class="sidenavimg" src="Value_N.png" height="25" width="25" valign="middle"/>Value</a>
+		<a onclick="Zeroboxtoggle()"><img class="sidenavimg" src="Zero.png" height="25" width="25" valign="middle"/>Zero</a>
+		<a onclick="Maximumboxtoggle()"><img class="sidenavimg" src="Maximum.png" height="25" width="25" valign="middle"/>Maximum</a>
+		<a onclick="Minimumboxtoggle()"><img class="sidenavimg" src="Minimum.png" height="25" width="25" valign="middle"/>Minimum</a>
+		<a onclick="Intersectboxtoggle()"><img class="sidenavimg" src="Intersect.png" height="25" width="25" valign="middle"/>Intersect</a>		
+		</div>
+	</div>
+	
+
+	
+<div name="1" id="1" style="display:block;">
+	<div name="graphsettingsform" id="graphsettingsform"> 
+		<form name="graphsettings" id="graphsettings">
+			<div class="formrow"> <label class="formulelabel">Functie 1  		</label>	<input class="formuleinput" name = "formule1" id="formule1" type="text" readonly onclick="formule1onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input> </div>
+			<div class="formrow"> <label class="formulelabel">Functie 2  		</label>	<input class="formuleinput" name = "formule2" id="formule2" type="text" readonly onclick="formule2onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input> </div>
+			<div class="formrow"> <label id="xminlabel"class="windowsettingslabel">X-min  </label>	<input class="windowsettingsinput" id="xmin" type="text" readonly onclick="xminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
+			<div class="formrow"> <label id="ymaxlabel"class="windowsettingslabel">X-max  </label>	<input class="windowsettingsinput" id="xmax" type="text" readonly onclick="xmaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
+			<div class="formrow"> <label id="yminlabel"class="windowsettingslabel">Y-min	</label>	<input class="windowsettingsinput" id="ymin" type="text" readonly onclick="yminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
+			<div class="formrow"> <label id="ymaxlabel"class="windowsettingslabel">Y-max	</label>	<input class="windowsettingsinput" id="ymax" type="text" readonly onclick="ymaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
+			
+			<script>
+			
+			</script>
+		</form>
+		</div>
+	</div>
+	
+	
+	
+
+	<form name="Calc">
+	
+	<div id="value" class="functionbox">
+	value
+	</div>
+	
+	<div id="Zero" class="functionbox">
+	zero
+	</div>
+	
+	<div id="Maximum" class="functionbox">
+	maximum
+	</div>
+	
+	<div id="Minimum" class="functionbox">
+	minimum
+	</div>
+	
+	<div id="Intersect" class="functionbox">
+	intersect
+	</div>
+	
+	
+	
+	
+	
+	
+		<div name="buttons" id="buttons" style="display:block;">
+	
+<!-- Swipemenu -->
+	<div id="mySwipemenu" class="swipemenu">
+			<input TYPE="button" NAME="INV" VALUE="INV" OnClick= "" class="operator">
+            <input TYPE="button" NAME="log"   VALUE="log" OnCLick="_log()">
+            <input TYPE="button" NAME="ln" VALUE="ln" OnClick="_ln()">
+            <input TYPE="button" NAME="tan" 	VALUE="tan" onClick="_tan()"> 
+            <input TYPE="button" NAME="sin"   VALUE="sin" OnClick="_sin()">
+            <input TYPE="button" NAME="cos"   VALUE="cos" OnCLick="_cos()">
+            <input TYPE="button" NAME="pi" VALUE="&pi;" OnClick="_pi()">
+            <input TYPE="button" NAME="e"  VALUE="e" onClick="_e()">
+            <input TYPE="button" NAME="negMin"  VALUE="(-)" onClick="">
+            <input TYPE="button" NAME="xWortel"  VALUE="x&radic;" onClick="_xWortel()">
+            <input TYPE="button" NAME="secondWortel"   VALUE="&radic;" onClick="_wortel()">
+            <input TYPE="button" NAME="pow"   VALUE="^" onClick="_macht()">
+	</div> 
+	
+<!-- Rekenmachine -->
+
+	<div id="calculator">		
+		<div class="keys">
+        	<input TYPE="button" NAME="x"   		VALUE="x" 				OnClick= "_x()">
+            <input TYPE="button" NAME=" ( "   		VALUE="  (  " 			OnCLick=" _linkerHaakje()">
+            <input TYPE="button" NAME=" ) " 		VALUE="  )  " 			OnClick="_rechterHaakje()">
+            <input TYPE="button" NAME="backspace" 	VALUE=" &larr; " 		OnClick="_backspace()">
+            <input TYPE="button" NAME="one"   		VALUE="  1  " 			OnClick="_1()">
+            <input TYPE="button" NAME="two"   		VALUE="  2  " 			OnCLick="_2()">
+            <input TYPE="button" NAME="three" 		VALUE="  3  " 			OnClick="_3()">
+            <input TYPE="button" NAME="times"  		VALUE=" &times;  " 		OnClick="vermenigvuldigen()"	class="operator">
+            <input TYPE="button" NAME="four"  		VALUE="  4  " 			OnClick="_4()">
+            <input TYPE="button" NAME="five"  		VALUE="  5  " 			OnCLick="_5()">
+            <input TYPE="button" NAME="six"   		VALUE="  6  " 			OnClick="_6()">
+            <input TYPE="button" NAME="div"   		VALUE="  &divide;  " 	OnClick="delen()"				class="operator">
+            <input TYPE="button" NAME="seven" 		VALUE="  7  " 			OnClick="_7()">
+            <input TYPE="button" NAME="eight" 		VALUE="  8  " 			OnCLick="_8()">
+            <input TYPE="button" NAME="nine"  		VALUE="  9  " 			OnClick="_9()">
+            <input TYPE="button" NAME="plus" 		VALUE="  +  " 			OnClick="optellen()"			class="operator">
+            <input TYPE="button" NAME="dot" 		VALUE="  .  " 			OnClick="_punt()">
+            <input TYPE="button" NAME="zero"  		VALUE="  0  " 			OnClick="_0()">
+            <input TYPE="button" NAME="enter"   	VALUE="  RUN" 			OnClick="run()">
+            <input TYPE="button" NAME="minus" 		VALUE="  -  " 			OnClick="aftrekken(formule1.value, formule2.value, xmin.value, xmax.value, ymin.value, ymax.value)"			class="operator">
+		</div>
+	</div>
+	</div>
+</form>
+</div>
+	
+	
+<div id="2" style="display:none;" height:70%; width:100%;">
+	<div><div id="formule1weergave" style="width:50%"></div><div id="formule2weergave" style="width:50%"></div></div>
+    <canvas id="myCanvas" style="width:100%; height:100%;"></canvas>
+    <script>
+      function Graph(config) {
+        // user defined properties
+        this.canvas = document.getElementById(config.canvasId);
+        this.minX = config.minX;
+        this.minY = config.minY;
+        this.maxX = config.maxX;
+        this.maxY = config.maxY;
+        this.unitsPerTick = config.unitsPerTick;
+
+        // constants
+        this.axisColor = '#aaa';
+        this.font = '8pt Calibri';
+        this.tickSize = 20;
+
+        // relationships
+        this.context = this.canvas.getContext('2d');
+        this.rangeX = this.maxX - this.minX;
+        this.rangeY = this.maxY - this.minY;
+        this.unitX = this.canvas.width / this.rangeX;
+        this.unitY = this.canvas.height / this.rangeY;
+        this.centerY = Math.round(Math.abs(this.minY / this.rangeY) * this.canvas.height);
+        this.centerX = Math.round(Math.abs(this.minX / this.rangeX) * this.canvas.width);
+        this.iteration = (this.maxX - this.minX) / 1000;
+        this.scaleX = this.canvas.width / this.rangeX;
+        this.scaleY = this.canvas.height / this.rangeY;
+
+        // draw x and y axis  
+        this.drawXAxis();
+        this.drawYAxis();
+      }
+
+      Graph.prototype.drawXAxis = function() {
+        var context = this.context;
+        context.save();
+        context.beginPath();
+        context.moveTo(0, this.centerY);
+        context.lineTo(this.canvas.width, this.centerY);
+        context.strokeStyle = this.axisColor;
+        context.lineWidth = 2;
+        context.stroke();
+
+        // draw tick marks
+        var xPosIncrement = this.unitsPerTick * this.unitX;
+        var xPos, unit;
+        context.font = this.font;
+        context.textAlign = 'center';
+        context.textBaseline = 'top';
+
+        // draw left tick marks
+        xPos = this.centerX - xPosIncrement;
+        unit = -1 * this.unitsPerTick;
+        while(xPos > 0) {
+          context.moveTo(xPos, this.centerY - this.tickSize / 2);
+          context.lineTo(xPos, this.centerY + this.tickSize / 2);
+          context.stroke();
+          
+		  //Show axis values
+		  //context.fillText(unit, xPos, this.centerY + this.tickSize / 2 + 3);
+          
+		  unit -= this.unitsPerTick;
+          xPos = Math.round(xPos - xPosIncrement);
+        }
+
+        // draw right tick marks
+        xPos = this.centerX + xPosIncrement;
+        unit = this.unitsPerTick;
+        while(xPos < this.canvas.width) {
+          context.moveTo(xPos, this.centerY - this.tickSize / 2);
+          context.lineTo(xPos, this.centerY + this.tickSize / 2);
+          context.stroke();
+          
+		  //Show axis values
+		  //context.fillText(unit, xPos, this.centerY + this.tickSize / 2 + 3);
+		  
+          unit += this.unitsPerTick;
+          xPos = Math.round(xPos + xPosIncrement);
+        }
+        context.restore();
+		
+      };
+
+      Graph.prototype.drawYAxis = function() {
+        var context = this.context;
+        context.save();
+        context.beginPath();
+        context.moveTo(this.centerX, 0);
+        context.lineTo(this.centerX, this.canvas.height);
+        context.strokeStyle = this.axisColor;
+        context.lineWidth = 2;
+        context.stroke();
+
+        // draw tick marks
+        var yPosIncrement = this.unitsPerTick * this.unitY;
+        var yPos, unit;
+        context.font = this.font;
+        context.textAlign = 'right';
+        context.textBaseline = 'middle';
+
+        // draw top tick marks
+        yPos = this.centerY - yPosIncrement;
+        unit = this.unitsPerTick;
+        while(yPos > 0) {
+          context.moveTo(this.centerX - this.tickSize / 2, yPos);
+          context.lineTo(this.centerX + this.tickSize / 2, yPos);
+          context.stroke();
+          
+		  //Show axis values
+		  //context.fillText(unit, this.centerX - this.tickSize / 2 - 3, yPos);
+          unit += this.unitsPerTick;
+          yPos = Math.round(yPos - yPosIncrement);
+        }
+
+        // draw bottom tick marks
+        yPos = this.centerY + yPosIncrement;
+        unit = -1 * this.unitsPerTick;
+        while(yPos < this.canvas.height) {
+          context.moveTo(this.centerX - this.tickSize / 2, yPos);
+          context.lineTo(this.centerX + this.tickSize / 2, yPos);
+          context.stroke();
+		  
+		  //Show axis values
+		  //context.fillText(unit, this.centerX - this.tickSize / 2 - 3, yPos);
+          unit -= this.unitsPerTick;
+          yPos = Math.round(yPos + yPosIncrement);
+        }
+        context.restore();
+      };
+
+      Graph.prototype.drawEquation = function(equation, color, thickness) {
+        var context = this.context;
+        context.save();
+        context.save();
+        this.transformContext();
+
+        context.beginPath();
+        context.moveTo(this.minX, equation(this.minX));
+
+        for(var x = this.minX + this.iteration; x <= this.maxX; x += this.iteration) {
+          context.lineTo(x, equation(x));
+        }
+
+        context.restore();
+        context.lineJoin = 'round';
+        context.lineWidth = thickness;
+        context.strokeStyle = color;
+        context.stroke();
+        context.restore();
+      };
+
+      Graph.prototype.transformContext = function() {
+        var context = this.context;
+
+        // move context to center of canvas
+        this.context.translate(this.centerX, this.centerY);
+
+        /*
+         * stretch grid to fit the canvas window, and
+         * invert the y scale so that that increments
+         * as you move upwards
+         */
+        context.scale(this.scaleX, -this.scaleY);
+      };
+      
+	  
+	  function run(formule1,formule2, xmin,ymin,xmax,ymax) {
+	
+		var xmin = this.xmin.value; 
+		var xmax = this.xmax.value; 
+		var ymin = -1 * this.ymax.value; // Gelieve deze rare constructie niet te verbeteren, want het bovenstaande programma spiegelt de y-as in de x-as
+		var ymax = -1 * this.ymin.value; // Gelieve deze rare constructie niet te verbeteren, want het bovenstaande programma spiegelt de y-as in de x-as
+		
+		if (xmin && xmax && ymin && ymax !== null) {
+		
+			if (xmin < xmax && ymin < ymax) {
+			   	document.getElementById("sidenavtext").style.display = "block";
+				document.getElementById("1").style.display = "none";
+				document.getElementById("2").style.display = "block";
+				document.getElementById("buttons").style.display = "none";
+				document.getElementById("formule1weergave").innerHTML = "Functie 1: y = " + this.formule1.value; 
+				document.getElementById("formule2weergave").innerHTML = "Functie 2: y = " + this.formule2.value; 
+				
+				var myGraph = new Graph({
+					
+					
+					canvasId: 'myCanvas',
+					minX: eval('('+ xmin + ')'), 	
+					minY: eval('('+ ymin + ')'),
+					maxX: eval('('+ xmax + ')'),
+					maxY: eval('('+ ymax + ')'),
+					unitsPerTick: 1
+				}); 
+				
+				myGraph.drawEquation(function(x) {
+					var berekening = this.formule1.value;
+					var berekening1 = berekening.replace("log", "1/Math.LN10 * Math.log"); //Math.log berekent de natuurlijke logaritme, daarom deze omslachtige manier.
+					var berekening2 = berekening1.replace("ln", "Math.log");
+					var berekening3 = berekening2.replace("sin", "Math.sin");
+					var berekening4 = berekening3.replace("cos", "Math.cos");
+					var berekening5 = berekening4.replace("tan", "Math.tan");
+					var berekening6 = berekening5.replace("pi", "Math.PI");
+					var berekening7 = berekening6.replace("e", "Math.E");
+					var berekening8 = berekening7.replace("xWortel", "Math.pow("); //werkt nog niet
+					var berekening9 = berekening8.replace("wortel", "Math.sqrt");
+					var berekening10 = berekening9.replace("macht", "Math.pow("); //werkt nog niet
+					return eval('('+ berekening10 + ')'); 		
+				}, 'green', 2);
+				myGraph.drawEquation(function(x) {
+					var berekening = this.formule2.value;
+					var berekening1 = berekening.replace("log", "1/Math.LN10 * Math.log"); //Math.log berekent de natuurlijke logaritme, daarom deze omslachtige manier.
+					var berekening2 = berekening1.replace("ln", "Math.log");
+					var berekening3 = berekening2.replace("sin", "Math.sin");
+					var berekening4 = berekening3.replace("cos", "Math.cos");
+					var berekening5 = berekening4.replace("tan", "Math.tan");
+					var berekening6 = berekening5.replace("pi", "Math.PI");
+					var berekening7 = berekening6.replace("_e", "Math.E");
+					var berekening8 = berekening7.replace("xWortel", "Math.pow("); //werkt nog niet
+					var berekening9 = berekening8.replace("wortel", "Math.sqrt");
+					var berekening10 = berekening9.replace("macht", "Math.pow("); //werkt nog niet
+					return eval('('+ berekening10 + ')'); 		
+				}, 'blue', 2);
+				
+			} 
+				
+		};
+	  };
+	 
+	  
+    </script>
+
+	<button type="button"  onclick="Back()" style="height:25px; width: 150px;">Back to graphsettings</button> 
+		<button type="button"  onclick="Clearandback()" style="height:25px; width: 300px;">Clear and Back to graphsettings</button> 
+	
+	
+	<script>
+	function Clearandback() {
+		location.reload();
+		Back(); 	
+	}
+	
+	function Back() {
+	document.getElementById("1").style.display = "block";
+	document.getElementById("2").style.display = "none";
+	document.getElementById("buttons").style.display = "block";
+	document.getElementById("value").style.display = "none";
+	}
+	</script>
+</div>
+
+	
+
+</body> 
+</html>
