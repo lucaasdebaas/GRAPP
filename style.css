@@ -96,9 +96,7 @@ body {
     background-color: white;
     position:fixed;
     border-radius: 10%;
-    display:none;
-    
-    
+    display:none;  
  }
 
 /*The side navigation menu*/
@@ -262,6 +260,10 @@ body {
 	background-color: #7f7f7f;
 }
 
+.keys input.run {
+	font-size: 100%;
+}
+
 .keys input.operator:active {
 	background-color: #999999;
 }
@@ -325,3 +327,89 @@ table, td {
     box-sizing: border-box;
 	font-size: 100%;	
 }
+
+/*Graph*/
+#myCanvas {
+	width: 100%;
+	border-bottom: 1px solid #efefef;
+}
+
+#footer {
+	width: 100%;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+#formule1weergave {
+	font-family: 'ROBOTO';
+	color: #2d3275;
+	padding: 5px;
+	padding-left: 12px;
+	font-size: 150%;
+	width: 100%;
+	/* Zorgen dat je ze niet kan selecteren */
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select:	none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+#formule2weergave {
+	font-family: 'ROBOTO';
+	color: #2c7551;
+	padding: 5px;
+	padding-left: 12px;
+	font-size: 150%;
+	width: 100%;
+	/* Zorgen dat je ze niet kan selecteren */
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select:	none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.footerbutton {
+	display: inline-block;
+	padding: 15px;
+	width: 50%;
+	background-color: #efefef;
+	color: #a0a0a0;
+	border: none;
+	outline: none;
+	font-family: 'ROBOTOLIGHT';
+	font-size: 125%;
+	text-align: center;
+	/* Zorgen dat je ze niet kan selecteren */
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select:	none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.footerbutton:active {
+	background-color: #e0e0e0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,7 +7,6 @@ var v = 0;
 		document.getElementById("hamburger").innerHTML = '<img src="kruis.svg" height="18px"/>';
 		v = 1;
 		closeSwipe(); //om te voorkomen dat ze allebei aanstaan tegelijkertijd
-		document.body.style.background = "#999999";
 	}
 
 			// Set the width of the side navigation to 0 
@@ -15,7 +14,6 @@ var v = 0;
 		document.getElementById("mySidenav").style.width = "0"; 
 		document.getElementById("hamburger").innerHTML = '<img src="hamburger.svg" height="18px"/>';
 		v = 0;
-		document.body.style.background = "white";
 	}
 	
 	function toggleNav() {
@@ -32,12 +30,10 @@ var v = 0;
 		document.getElementById("mySwipemenu").style.left = "5%";
 		SwipePhase = 1;
 		closeNav(); //om te voorkomen dat ze allebei aanstaan tegelijkertijd
-		document.body.style.background = "#999999";
 	}
 	
 	function closeSwipe() {
 		document.getElementById("mySwipemenu").style.left = "98%";
-		document.body.style.background = "white"; 
 		SwipePhase = 0;
 	}
 	

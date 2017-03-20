@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>Grapp</title>
+  <title>GRAPH</title>
 
   <style type="text/css">
     body, html {
@@ -69,8 +69,6 @@
 
 <body>
 
-
-
 <!-- Header, indien nodig gebruik dit tekentje voor hamburgermenu en pas padding aan: &#9776; -->
 <div id="header"><a id="hamburger" onclick="toggleNav()"><img src="hamburger.svg" height="18px"/></a><span id="grapp">grapp</span></div>  
 
@@ -124,32 +122,7 @@
 	
 
 	<form name="Calc">
-	
-	<div id="value" class="functionbox">
-	value
-	</div>
-	
-	<div id="Zero" class="functionbox">
-	zero
-	</div>
-	
-	<div id="Maximum" class="functionbox">
-	maximum
-	</div>
-	
-	<div id="Minimum" class="functionbox">
-	minimum
-	</div>
-	
-	<div id="Intersect" class="functionbox">
-	intersect
-	</div>
-	
-	
-	
-	
-	
-	
+		
 		<div name="buttons" id="buttons" style="display:block;">
 	
 <!-- Swipemenu -->
@@ -175,22 +148,22 @@
         	<input TYPE="button" NAME="x"   		VALUE="x" 				OnClick= "_x()">
             <input TYPE="button" NAME=" ( "   		VALUE="  (  " 			OnCLick=" _linkerHaakje()">
             <input TYPE="button" NAME=" ) " 		VALUE="  )  " 			OnClick="_rechterHaakje()">
-            <input TYPE="button" NAME="backspace" 	VALUE=" &larr; " 		OnClick="_backspace()">
+            <input TYPE="button" NAME="backspace" 	VALUE=" &larr; " 		OnClick="_backspace()"			class="operator">
             <input TYPE="button" NAME="one"   		VALUE="  1  " 			OnClick="_1()">
             <input TYPE="button" NAME="two"   		VALUE="  2  " 			OnCLick="_2()">
             <input TYPE="button" NAME="three" 		VALUE="  3  " 			OnClick="_3()">
-            <input TYPE="button" NAME="times"  		VALUE=" &times;  " 		OnClick="vermenigvuldigen()"	class="operator">
+            <input TYPE="button" NAME="times"  		VALUE="  *  " 		OnClick="vermenigvuldigen()"	class="operator">
             <input TYPE="button" NAME="four"  		VALUE="  4  " 			OnClick="_4()">
             <input TYPE="button" NAME="five"  		VALUE="  5  " 			OnCLick="_5()">
             <input TYPE="button" NAME="six"   		VALUE="  6  " 			OnClick="_6()">
-            <input TYPE="button" NAME="div"   		VALUE="  &divide;  " 	OnClick="delen()"				class="operator">
+            <input TYPE="button" NAME="div"   		VALUE="  /  " 	OnClick="delen()"				class="operator">
             <input TYPE="button" NAME="seven" 		VALUE="  7  " 			OnClick="_7()">
             <input TYPE="button" NAME="eight" 		VALUE="  8  " 			OnCLick="_8()">
             <input TYPE="button" NAME="nine"  		VALUE="  9  " 			OnClick="_9()">
             <input TYPE="button" NAME="plus" 		VALUE="  +  " 			OnClick="optellen()"			class="operator">
             <input TYPE="button" NAME="dot" 		VALUE="  .  " 			OnClick="_punt()">
             <input TYPE="button" NAME="zero"  		VALUE="  0  " 			OnClick="_0()">
-            <input TYPE="button" NAME="enter"   	VALUE="  RUN" 			OnClick="run()">
+            <input TYPE="button" NAME="enter"   	VALUE="  RUN" 			OnClick="run()"					class="run">
             <input TYPE="button" NAME="minus" 		VALUE="  -  " 			OnClick="aftrekken(formule1.value, formule2.value, xmin.value, xmax.value, ymin.value, ymax.value)"			class="operator">
 		</div>
 	</div>
@@ -199,9 +172,16 @@
 </div>
 	
 	
-<div id="2" style="display:none;" height:70%; width:100%;">
-	<div><div id="formule1weergave" style="width:50%"></div><div id="formule2weergave" style="width:50%"></div></div>
-    <canvas id="myCanvas" style="width:100%; height:100%;"></canvas>
+<div id="2" style="display:none" width="100%">
+	
+    <canvas id="myCanvas"></canvas>
+	
+		<div id="formule1weergave"></div>
+		<div id="formule2weergave"></div>
+		
+	<div id="footer">	
+		<button type="button"  onclick="Back()" 		class="footerbutton">RETURN</button><button type="button"  onclick="Clearandback()"	class="footerbutton">CLEAR</button> 
+	</div>
     <script>
       function Graph(config) {
         // user defined properties
@@ -215,7 +195,7 @@
         // constants
         this.axisColor = '#aaa';
         this.font = '8pt Calibri';
-        this.tickSize = 20;
+        this.tickSize = 3;
 
         // relationships
         this.context = this.canvas.getContext('2d');
@@ -241,7 +221,7 @@
         context.moveTo(0, this.centerY);
         context.lineTo(this.canvas.width, this.centerY);
         context.strokeStyle = this.axisColor;
-        context.lineWidth = 2;
+        context.lineWidth = 1;
         context.stroke();
 
         // draw tick marks
@@ -291,7 +271,7 @@
         context.moveTo(this.centerX, 0);
         context.lineTo(this.centerX, this.canvas.height);
         context.strokeStyle = this.axisColor;
-        context.lineWidth = 2;
+        context.lineWidth = 1;
         context.stroke();
 
         // draw tick marks
@@ -368,11 +348,39 @@
       
 	  
 	  function run(formule1,formule2, xmin,ymin,xmax,ymax) {
-	
+	 /*
+		// Checken of window-variable niet leeg is, anders vervangen door 10 of -10
+		if ((typeof this.xmin.value !== 'number') || (this.xmin.value.length == 0)) {
+			var xmin = -10;
+		} else {
+			var xmin = this.xmin.value; 
+		}
+		
+		if ((typeof this.xmax.value !== 'number') || (this.xmax.value.length == 0)) {
+			var xmax = 10;
+		} else {
+			var xmax = this.xmax.value; 
+		}
+				
+		if ((typeof this.ymax.value !== 'number') || (this.ymax.value.length == 0)) {
+			var ymin = -10; 
+		} else {
+			var ymin = -1 * this.ymax.value; // Gelieve deze rare constructie niet te verbeteren, want het bovenstaande programma spiegelt de y-as in de x-as
+		}
+		
+		if ((typeof this.ymin.value !== 'number') || (this.ymin.value.length == 0)) {
+			var ymax = 10; 
+		} else {
+			var ymax = -1 * this.ymin.value; // Gelieve deze rare constructie niet te verbeteren, want het bovenstaande programma spiegelt de y-as in de x-as
+		}
+	*/ 
+		
 		var xmin = this.xmin.value; 
 		var xmax = this.xmax.value; 
 		var ymin = -1 * this.ymax.value; // Gelieve deze rare constructie niet te verbeteren, want het bovenstaande programma spiegelt de y-as in de x-as
-		var ymax = -1 * this.ymin.value; // Gelieve deze rare constructie niet te verbeteren, want het bovenstaande programma spiegelt de y-as in de x-as
+		var ymax = -1 * this.ymin.value; // Gelieve deze rare constructie niet te verbeteren, want het bovenstaande programma spiegelt de y-as in de x-as 
+		
+		
 		
 		if (xmin && xmax && ymin && ymax !== null) {
 		
@@ -380,8 +388,8 @@
 				document.getElementById("1").style.display = "none";
 				document.getElementById("2").style.display = "block";
 				document.getElementById("buttons").style.display = "none";
-				document.getElementById("formule1weergave").innerHTML = "Functie 1: y = " + this.formule1.value; 
-				document.getElementById("formule2weergave").innerHTML = "Functie 2: y = " + this.formule2.value; 
+				document.getElementById("formule1weergave").innerHTML = "Y<sub>1</sub> = " + this.formule1.value; 
+				document.getElementById("formule2weergave").innerHTML = "Y<sub>2</sub> = " + this.formule2.value; 
 				
 				var myGraph = new Graph({
 					
@@ -422,10 +430,10 @@
 					var berekening3 = berekening2.replace("sin", "Math.sin");
 					var berekening4 = berekening3.replace("cos", "Math.cos");
 					var berekening5 = berekening4.replace("tan", "Math.tan");
-					var berekening6 = berekening5.replace("pi", "Math.PI");
+					var berekening6 = berekening5.replace("π", "Math.PI");
 					var berekening7 = berekening6.replace("e", "Math.E");
 					var berekening8 = berekening7.replace("√", "Math.sqrt");
-					var berekening10 = berekening8.replace("x√", "**");
+					var berekening10 = berekening8.replace("^", "**");
 					
 					//Hogere machtswortelberekenen
 					
@@ -502,7 +510,7 @@
 						var berekening12 = berekening11.replace("grondtalxWortexponent", machtswortel);
 					}
 					return eval('('+ berekening12 + ')'); 		
-				}, 'green', 2);
+				}, '#2d3275', 2);
 				
 				//Formule 2
 				myGraph.drawEquation(function(x) {
@@ -532,10 +540,10 @@
 					var berekening3 = berekening2.replace("sin", "Math.sin");
 					var berekening4 = berekening3.replace("cos", "Math.cos");
 					var berekening5 = berekening4.replace("tan", "Math.tan");
-					var berekening6 = berekening5.replace("pi", "Math.PI");
+					var berekening6 = berekening5.replace("π", "Math.PI");
 					var berekening7 = berekening6.replace("e", "Math.E");
 					var berekening8 = berekening7.replace("√", "Math.sqrt");
-					var berekening10 = berekening8.replace("x√", "**");
+					var berekening10 = berekening8.replace("^", "**");
 					
 					//Hogere machtswortelberekenen
 					
@@ -612,19 +620,12 @@
 						var berekening12 = berekening11.replace("grondtalxWortexponent", machtswortel);
 					}
 					return eval('('+ berekening10 + ')'); 		
-				}, 'blue', 2);	
+				}, '#2c7551', 2);	
 			}
 		};
 	  };
 	 
-	  
-    </script>
 
-	<button type="button"  onclick="Back()" style="height:25px; width: 150px;">Back to graphsettings</button> 
-		<button type="button"  onclick="Clearandback()" style="height:25px; width: 300px;">Clear and Back to graphsettings</button> 
-	
-	
-	<script>
 	function Clearandback() {
 		location.reload();
 		Back(); 	
@@ -634,7 +635,6 @@
 	document.getElementById("1").style.display = "block";
 	document.getElementById("2").style.display = "none";
 	document.getElementById("buttons").style.display = "block";
-	document.getElementById("value").style.display = "none";
 	}
 	</script>
 </div>
