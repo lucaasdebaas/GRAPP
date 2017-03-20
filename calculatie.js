@@ -8,7 +8,20 @@ function calculate() {
 		    berekening = "error";  //De variabele berekening is error, zodat de variabele uitvoer undefined zal zijn.
 		}
 	}
-	    
+	
+	var lengte = berekening.length;
+	for (j=1; j<lengte; j++) {
+		if (berekening.substr(j,1) == ")") {
+			sluithaakjes += 1;
+		}
+		if (berekening.substr(j,1) == "(") {
+			openhaakjes += 1;
+		}
+	}
+	if (openhaakjes != sluithaakjes) {
+		berekening == "error";
+	}
+	
 	var berekening0 = berekening.replace("--", "+");  //dubbele min vervangen door plus
 	var berekening1 = berekening0.replace("log", "1/Math.LN10 * Math.log"); //Math.log berekent de natuurlijke logaritme, daarom deze omslachtige manier.
 	var berekening2 = berekening1.replace("ln", "Math.log");
