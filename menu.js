@@ -3,11 +3,7 @@ var v = 0;
 	
 	/* Sidenav */
 	function openNav() {
-		document.getElementById("Zero").style.display = "none";
-		document.getElementById("Maximum").style.display = "none";
-		document.getElementById("Minimum").style.display = "none";
-		document.getElementById("Intersect").style.display = "none";
-		document.getElementById("value").style.display = "none";
+		
 		phasef = 0;
 		document.getElementById("mySidenav").style.width = "200px";
 		document.getElementById("hamburger").innerHTML = '<img src="kruis.svg" height="18px"/>';
