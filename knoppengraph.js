@@ -259,19 +259,19 @@ function ymaxonclick(formule1, formule2,xmin,xmax,ymin,ymax) {
 	
 	function _xWortel() {
 		var input = document.querySelectorAll('[activeFunction = "1"]')[0];
-		input.value += "x&radic;(";
+		input.value += "x√(";
 		
 	}
 	
 	function _wortel() {
 		var input = document.querySelectorAll('[activeFunction = "1"]')[0];
-		input.value += "&radic;(";
+		input.value += "√(";
 		
 	}
 	
 	function _macht() {
 		var input = document.querySelectorAll('[activeFunction = "1"]')[0];
-		input.value += "&circ;";
+		input.value += "^";
 		
 	}
 

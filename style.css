@@ -270,24 +270,58 @@ body {
 	background-color: #5be5b7;
 }
 
-/*Graph*/
-.formrow {
-	width: 50%; 
-	height: 70px; 
-	margin: 10px; 
-	
+
+/*Inputvelden graphsettings */
+
+#graphsettings {
 }
 
-.formulelabel, .windowsettingslabel {
-	font-size: 30px; 
-}
-
-.formuleinput, .windowsettingsinput {
-	width: 200px; 
-	height: 50px; 
-	font-size: 30px; 
+table, td {
+	border: none;
+	padding: 0;
+	margin: 0;
+	border-collapse: collapse;
 }
 
 .formuleinput {
-	border-width: 2px; 
+	background-color: transparent;
+	font-family: 'ROBOTOLIGHT';
+	border: none;
+	float: left;
+	width: 100%;
+    padding: 15px 20px;
+    box-sizing: border-box;
+	font-size: 150%;
+}
+
+#graphsettings table {
+	width: 100%;
+}
+
+#graphsettings table td {
+	font-family: 'ROBOTO';
+	font-size: 100%;
+	margin: 0;
+	}
+
+#graphsettings table td.label {
+	width: 20%;
+	padding-left: 20px;
+}
+
+#graphsettings table td.input {
+	width: 30%;
+}
+
+.windowsettingsinput {
+	width: 100%;
+	font-family: 'ROBOTOLIGHT';
+	float: right;
+	margin: 0;
+	background-color: transparent;
+	display: inline-block;
+    padding: 12px 20px;
+    border: none;
+    box-sizing: border-box;
+	font-size: 100%;	
 }

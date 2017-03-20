@@ -84,21 +84,41 @@
 
 	
 <div name="1" id="1" style="display:block;">
-	<div name="graphsettingsform" id="graphsettingsform"> 
 		<form name="graphsettings" id="graphsettings">
-			<div class="formrow"> <label class="formulelabel">Functie 1  		</label>	<input class="formuleinput" name = "formule1" id="formule1" type="text" readonly onclick="formule1onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input> </div>
-			<div class="formrow"> <label class="formulelabel">Functie 2  		</label>	<input class="formuleinput" name = "formule2" id="formule2" type="text" readonly onclick="formule2onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input> </div>
-			<div class="formrow"> <label id="xminlabel"class="windowsettingslabel">X-min  </label>	<input class="windowsettingsinput" id="xmin" type="text" readonly onclick="xminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
-			<div class="formrow"> <label id="ymaxlabel"class="windowsettingslabel">X-max  </label>	<input class="windowsettingsinput" id="xmax" type="text" readonly onclick="xmaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
-			<div class="formrow"> <label id="yminlabel"class="windowsettingslabel">Y-min	</label>	<input class="windowsettingsinput" id="ymin" type="text" readonly onclick="yminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
-			<div class="formrow"> <label id="ymaxlabel"class="windowsettingslabel">Y-max	</label>	<input class="windowsettingsinput" id="ymax" type="text" readonly onclick="ymaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div>
-			
-			<script>
-			
-			</script>
+				<input class="formuleinput" 		name = "formule1" 	id="formule1" 	type="text" placeholder="function 1" 	readonly onclick="formule1onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input>
+				<input class="formuleinput" 		name = "formule2" 	id="formule2" 	type="text" placeholder="function 2" 	readonly onclick="formule2onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input>
+			<table>
+			<tr>
+				<td class="label" id="xminlab" onclick="xminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">min X</td>
+				<td class="input"><input class="windowsettingsinput" 			id="xmin" 		type="text" readonly onclick="xminonclick(formule1,formule2,xmin,xmax,ymin,ymax)" /></td>
+				<td class="label" id="xmaxlab" onclick="xmaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">max X</td>
+				<td class="input"><input class="windowsettingsinput" 			id="xmax" 		type="text" readonly onclick="xmaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)" /></td>
+			</tr>
+			<tr>
+				<td class="label" id="yminlab" onclick="yminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">min Y</td>
+				<td class="input"><input class="windowsettingsinput" 			id="ymin" 		type="text" readonly onclick="yminonclick(formule1,formule2,xmin,xmax,ymin,ymax)" /></td>
+				<td class="label" id="ymaxlab" onclick="ymaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">max Y</td>
+				<td class="input"><input class="windowsettingsinput" 			id="ymax" 		type="text" readonly onclick="ymaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)" /></td>
+			</table>
 		</form>
-		</div>
-	</div>
+</div>
+	
+<!-- <div name="1" id="1" style="display:block;"> -->
+	<!-- <div name="graphsettingsform" id="graphsettingsform">  -->
+		<!-- <form name="graphsettings" id="graphsettings"> -->
+			<!-- <div class="formrow"> <label class="formulelabel">Functie 1  		</label>	<input class="formuleinput" name = "formule1" id="formule1" type="text" readonly onclick="formule1onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input> </div> -->
+			<!-- <div class="formrow"> <label class="formulelabel">Functie 2  		</label>	<input class="formuleinput" name = "formule2" id="formule2" type="text" readonly onclick="formule2onclick(formule1,formule2,xmin,xmax,ymin,ymax)"></input> </div> -->
+			<!-- <div class="formrow"> <label id="xminlabel"class="windowsettingslabel">X-min  </label>	<input class="windowsettingsinput" id="xmin" type="text" readonly onclick="xminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div> -->
+			<!-- <div class="formrow"> <label id="ymaxlabel"class="windowsettingslabel">X-max  </label>	<input class="windowsettingsinput" id="xmax" type="text" readonly onclick="xmaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div> -->
+			<!-- <div class="formrow"> <label id="yminlabel"class="windowsettingslabel">Y-min	</label>	<input class="windowsettingsinput" id="ymin" type="text" readonly onclick="yminonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div> -->
+			<!-- <div class="formrow"> <label id="ymaxlabel"class="windowsettingslabel">Y-max	</label>	<input class="windowsettingsinput" id="ymax" type="text" readonly onclick="ymaxonclick(formule1,formule2,xmin,xmax,ymin,ymax)">	</input> </div> -->
+			
+			<!-- <script> -->
+			
+			<!-- </script> -->
+		<!-- </form> -->
+		<!-- </div> -->
+	<!-- </div> -->
 	
 	
 	
@@ -374,37 +394,226 @@
 					unitsPerTick: 1
 				}); 
 				
+				//Formule 1
 				myGraph.drawEquation(function(x) {
-					var berekening = this.formule1.value;
-					var berekening1 = berekening.replace("log", "1/Math.LN10 * Math.log"); //Math.log berekent de natuurlijke logaritme, daarom deze omslachtige manier.
+					var berekening = this.formule1.value; 
+					var lengte = berekening.length;
+					for (i=0; i<lengte; i++) {
+						if (berekening.slice(i,i+2) == "*/" || berekening.slice(i,i+2) == "/*" || berekening.slice(i,i+2) == "*+" || berekening.slice(i,i+2) == "/+" || berekening.slice(i,i+2) == "-+" || berekening.slice(i,i+2) == "-*" || berekening.slice(i,i+2) == "+*" || berekening.slice(i,i+2) == "-/" || berekening.slice(i,i+2) == "+/" || berekening.slice(i,i+2) == "**" || berekening.slice(i,i+2) == "//" || berekening.slice(i,i+2) == "++") {
+							berekening = "error";  //De variabele berekening is error, zodat de variabele uitvoer undefined zal zijn.
+						}
+					}
+					
+					for (j=1; j<lengte; j++) {
+						if (berekening.substr(j,1) == ")") {
+							sluithaakjes += 1;
+						}
+						if (berekening.substr(j,1) == "(") {
+							openhaakjes += 1;
+						}
+					}
+					if (openhaakjes != sluithaakjes) {
+						berekening == "error";
+					}
+					
+					var berekening0 = berekening.replace("--", "+");  //dubbele min vervangen door plus
+					var berekening1 = berekening0.replace("log", "1/Math.LN10 * Math.log"); //Math.log berekent de natuurlijke logaritme, daarom deze omslachtige manier.
 					var berekening2 = berekening1.replace("ln", "Math.log");
 					var berekening3 = berekening2.replace("sin", "Math.sin");
 					var berekening4 = berekening3.replace("cos", "Math.cos");
 					var berekening5 = berekening4.replace("tan", "Math.tan");
 					var berekening6 = berekening5.replace("pi", "Math.PI");
 					var berekening7 = berekening6.replace("e", "Math.E");
-					var berekening8 = berekening7.replace("xWortel", "Math.pow("); //werkt nog niet
-					var berekening9 = berekening8.replace("wortel", "Math.sqrt");
-					var berekening10 = berekening9.replace("macht", "Math.pow("); //werkt nog niet
-					return eval('('+ berekening10 + ')'); 		
+					var berekening8 = berekening7.replace("√", "Math.sqrt");
+					var berekening10 = berekening8.replace("x√", "**");
+					
+					//Hogere machtswortelberekenen
+					
+					var tekens = berekening10.length;
+					var berekening11 = "";  //deze drie variabelen worden aangemaakt om later in een berekening te testen of ze leeg zijn
+					var grondtal = "";
+					var exponent = "";
+					for (i=0; i<tekens; i++) {
+						if (berekening10.slice(i,i+5) == "xWort") {
+							//Grondtal van de macht zoeken
+							if (berekening10.slice(i-1,i) == ")") {  //als het teken voor de macht een sluithaakje is, dan
+								var sluithaakjes = 0;  // dit is het aantal sluithaakjes wat gevonden wordt voor de macht
+								var openhaakjes = 0;  // dit is het aantal openhaakjes wat gevonden wordt voor de macht
+								for (j=1; j<i; j++) {
+									if (berekening10.substr(i-j,1) == ")") {
+										sluithaakjes += 1;
+									}
+									if (berekening10.substr(i-j,1) == "(") {
+										openhaakjes += 1;
+									}
+									if (sluithaakjes == openhaakjes) {
+										console.log(berekening10.slice(i-(j+1), i));
+										grondtal = eval(berekening10.slice(i-(j+1), i));	 //dit is het grondtal van de macht	
+										var berekening11 = berekening10.replace(berekening10.slice(i-(j+1), i), "grondtal");
+										j=i;  //deze loop niet meer verder doorlopen
+									}
+								}
+							}
+							else 
+							{
+								for (j=1; j<=i; j++) {
+									if (berekening10.substr(i-j,1)== "*" || berekening10.substr(i-j,1)== "/" || berekening10.substr(i-j,1)== "+" || berekening10.substr(i-j,1)== "-" || berekening10.substr(i-j,1)== "(") {  //zoek de plus, min, vermenigvuldiging of deling voor de macht en bereken het juiste grondtal; het openingshaakje wordt gezocht om in situaties als (2^2)+1 geen problemen te krijgen.
+										grondtal = eval(berekening10.slice(i-(j-1), i));
+										var berekening11 = berekening10.replace(berekening10.slice(i-(j-1), i), "grondtal");
+										j=i;  //deze loop niet meer verder doorlopen
+									}
+								}
+							}
+							if (grondtal == "") {  //als er nog geen grondtal gevonden is, neem dat de eerste
+							console.log("HELLO");
+							grondtal = eval(berekening10.slice(0,i));
+							var berekening11 = berekening10.replace(berekening10.slice(0,i), "grondtal");
+							}
+							
+							//Exponent van de macht zoeken
+							var k = i+5;
+							var sluithaakjes = 0; 
+							var openhaakjes = 0;
+							for (j=0; j<k; j++) {
+								if (berekening10.substr(k+j,1) == ")") {
+									sluithaakjes += 1;
+								}					
+								if (berekening10.substr(k+j,1) == "(") {
+									openhaakjes += 1;
+								}
+								if (sluithaakjes == openhaakjes) {
+									console.log(j);
+									console.log(berekening10.slice(k, k+(j+1)));						
+									exponent = eval(berekening10.slice(k, k+(j+1)));	 
+									var berekening11 = berekening11.replace(berekening10.slice(k, k+(j+1)), "exponent");
+									j=k;  //deze loop niet meer verder doorlopen
+								}
+							}
+						}
+					}
+					
+					//De eigenlijke machtswortel berekenen
+					var machtswortel = Math.pow(exponent, 1/grondtal);
+					console.log(machtswortel);
+					if (berekening11 == "") {  //als er geen machtberekening is, deze overslaan en berekening12 gelijkstellen aan berekening10
+						var berekening12 = berekening10;
+					}
+					else {
+						var berekening12 = berekening11.replace("grondtalxWortexponent", machtswortel);
+					}
+					return eval('('+ berekening12 + ')'); 		
 				}, 'green', 2);
+				
+				//Formule 2
 				myGraph.drawEquation(function(x) {
 					var berekening = this.formule2.value;
-					var berekening1 = berekening.replace("log", "1/Math.LN10 * Math.log"); //Math.log berekent de natuurlijke logaritme, daarom deze omslachtige manier.
+					var lengte = berekening.length;
+					for (i=0; i<lengte; i++) {
+						if (berekening.slice(i,i+2) == "*/" || berekening.slice(i,i+2) == "/*" || berekening.slice(i,i+2) == "*+" || berekening.slice(i,i+2) == "/+" || berekening.slice(i,i+2) == "-+" || berekening.slice(i,i+2) == "-*" || berekening.slice(i,i+2) == "+*" || berekening.slice(i,i+2) == "-/" || berekening.slice(i,i+2) == "+/" || berekening.slice(i,i+2) == "**" || berekening.slice(i,i+2) == "//" || berekening.slice(i,i+2) == "++") {
+							berekening = "error";  //De variabele berekening is error, zodat de variabele uitvoer undefined zal zijn.
+						}
+					}
+					
+					for (j=1; j<lengte; j++) {
+						if (berekening.substr(j,1) == ")") {
+							sluithaakjes += 1;
+						}
+						if (berekening.substr(j,1) == "(") {
+							openhaakjes += 1;
+						}
+					}
+					if (openhaakjes != sluithaakjes) {
+						berekening == "error";
+					}
+					
+					var berekening0 = berekening.replace("--", "+");  //dubbele min vervangen door plus
+					var berekening1 = berekening0.replace("log", "1/Math.LN10 * Math.log"); //Math.log berekent de natuurlijke logaritme, daarom deze omslachtige manier.
 					var berekening2 = berekening1.replace("ln", "Math.log");
 					var berekening3 = berekening2.replace("sin", "Math.sin");
 					var berekening4 = berekening3.replace("cos", "Math.cos");
 					var berekening5 = berekening4.replace("tan", "Math.tan");
 					var berekening6 = berekening5.replace("pi", "Math.PI");
-					var berekening7 = berekening6.replace("_e", "Math.E");
-					var berekening8 = berekening7.replace("xWortel", "Math.pow("); //werkt nog niet
-					var berekening9 = berekening8.replace("wortel", "Math.sqrt");
-					var berekening10 = berekening9.replace("macht", "Math.pow("); //werkt nog niet
+					var berekening7 = berekening6.replace("e", "Math.E");
+					var berekening8 = berekening7.replace("√", "Math.sqrt");
+					var berekening10 = berekening8.replace("x√", "**");
+					
+					//Hogere machtswortelberekenen
+					
+					var tekens = berekening10.length;
+					var berekening11 = "";  //deze drie variabelen worden aangemaakt om later in een berekening te testen of ze leeg zijn
+					var grondtal = "";
+					var exponent = "";
+					for (i=0; i<tekens; i++) {
+						if (berekening10.slice(i,i+5) == "xWort") {
+							//Grondtal van de macht zoeken
+							if (berekening10.slice(i-1,i) == ")") {  //als het teken voor de macht een sluithaakje is, dan
+								var sluithaakjes = 0;  // dit is het aantal sluithaakjes wat gevonden wordt voor de macht
+								var openhaakjes = 0;  // dit is het aantal openhaakjes wat gevonden wordt voor de macht
+								for (j=1; j<i; j++) {
+									if (berekening10.substr(i-j,1) == ")") {
+										sluithaakjes += 1;
+									}
+									if (berekening10.substr(i-j,1) == "(") {
+										openhaakjes += 1;
+									}
+									if (sluithaakjes == openhaakjes) {
+										console.log(berekening10.slice(i-(j+1), i));
+										grondtal = eval(berekening10.slice(i-(j+1), i));	 //dit is het grondtal van de macht	
+										var berekening11 = berekening10.replace(berekening10.slice(i-(j+1), i), "grondtal");
+										j=i;  //deze loop niet meer verder doorlopen
+									}
+								}
+							}
+							else 
+							{
+								for (j=1; j<=i; j++) {
+									if (berekening10.substr(i-j,1)== "*" || berekening10.substr(i-j,1)== "/" || berekening10.substr(i-j,1)== "+" || berekening10.substr(i-j,1)== "-" || berekening10.substr(i-j,1)== "(") {  //zoek de plus, min, vermenigvuldiging of deling voor de macht en bereken het juiste grondtal; het openingshaakje wordt gezocht om in situaties als (2^2)+1 geen problemen te krijgen.
+										grondtal = eval(berekening10.slice(i-(j-1), i));
+										var berekening11 = berekening10.replace(berekening10.slice(i-(j-1), i), "grondtal");
+										j=i;  //deze loop niet meer verder doorlopen
+									}
+								}
+							}
+							if (grondtal == "") {  //als er nog geen grondtal gevonden is, neem dat de eerste
+							console.log("HELLO");
+							grondtal = eval(berekening10.slice(0,i));
+							var berekening11 = berekening10.replace(berekening10.slice(0,i), "grondtal");
+							}
+							
+							//Exponent van de macht zoeken
+							var k = i+5;
+							var sluithaakjes = 0; 
+							var openhaakjes = 0;
+							for (j=0; j<k; j++) {
+								if (berekening10.substr(k+j,1) == ")") {
+									sluithaakjes += 1;
+								}					
+								if (berekening10.substr(k+j,1) == "(") {
+									openhaakjes += 1;
+								}
+								if (sluithaakjes == openhaakjes) {
+									console.log(j);
+									console.log(berekening10.slice(k, k+(j+1)));						
+									exponent = eval(berekening10.slice(k, k+(j+1)));	 
+									var berekening11 = berekening11.replace(berekening10.slice(k, k+(j+1)), "exponent");
+									j=k;  //deze loop niet meer verder doorlopen
+								}
+							}
+						}
+					}
+					
+					//De eigenlijke machtswortel berekenen
+					var machtswortel = Math.pow(exponent, 1/grondtal);
+					console.log(machtswortel);
+					if (berekening11 == "") {  //als er geen machtberekening is, deze overslaan en berekening12 gelijkstellen aan berekening10
+						var berekening12 = berekening10;
+					}
+					else {
+						var berekening12 = berekening11.replace("grondtalxWortexponent", machtswortel);
+					}
 					return eval('('+ berekening10 + ')'); 		
-				}, 'blue', 2);
-				
-			} 
-				
+				}, 'blue', 2);	
+			}
 		};
 	  };
 	 
